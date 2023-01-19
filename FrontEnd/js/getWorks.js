@@ -1,26 +1,46 @@
-// async function foo() {
-//   let obj;
+let gallery = document.getElementById("portfolio"); // div class=gallery
 
-//   const res = await fetch("http://localhost:5678/api/works")
+async function foo() {
+  let allWorks;
 
-//   obj = await res.json();
+  const res = await fetch("http://localhost:5678/api/works");
 
-//   console.log(obj);
-// }
+  allWorks = await res.json();
 
-// foo();
+  console.log(allWorks);
 
-var obj;
+  function returnCards(allWorks) {
+    return (
+      '<div class="gallery">' +
+      allWorks
+        .map(
+          (allWorks) => `
+    <figure>
+      <img crossorigin="anonymous" src="${allWorks.imageUrl}" alt="${allWorks.title}" />
+      <figcaption>${allWorks.title}</figcaption>
+      </figure>`
+        )
+        .join("") +
+      "</div>"
+    );
+  }
 
-fetch("http://localhost:5678/api/works")
-  .then((res) => res.json())
-  .then((data) => console.log(data))
-  .then((data) => {
-    obj = data;
-  })
-  .catch((err) => console.log(err));
+  gallery.innerHTML = returnCards(allWorks);
+}
 
-console.log(obj);
+foo();
+
+// var obj;
+
+// fetch("http://localhost:5678/api/works")
+//   .then((res) => res.json())
+//   .then((data) => console.log(data))
+//   .then((data) => {
+//     obj = data;
+//   })
+//   .catch((err) => console.log(err));
+
+// console.log(obj);
 
 // fetch("http://localhost:5678/api/works")
 //   .then(function (res) {
@@ -34,15 +54,3 @@ console.log(obj);
 //   .catch(function (err) {
 //     // Une erreur est survenue
 //   });
-
-// console.log(results);
-
-// let gallery = document.getElementsByClassName("gallery"); // div class=gallery
-// //let gallery = document.getElementById("portfolio").children;
-
-// for (let i = 0; i < JSON.parse(JSON.stringify(results)).length; i++) {
-//   let figure = gallery.appendChild(document.createElement("figure"));
-
-//   figure.appendChild(document.createElement("img"));
-//   figure.appendChild(document.createElement("figcaption"));
-// }
