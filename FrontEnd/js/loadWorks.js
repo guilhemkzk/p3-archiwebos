@@ -1,6 +1,6 @@
 // GET ALL WORKS TO DISPLAY THE GALLERY
 
-let gallery = document.getElementById("portfolio");
+let gallery = document.getElementById("gallery-container");
 
 async function getWorks() {
   let allWorks;
@@ -10,7 +10,7 @@ async function getWorks() {
 
     allWorks = await res.json();
 
-    const returnCards = (allWorks) => {
+    const returnWorks = (allWorks) => {
       return (
         '<div class="gallery">' +
         allWorks
@@ -26,7 +26,7 @@ async function getWorks() {
       );
     };
 
-    gallery.insertAdjacentHTML("beforeend", returnCards(allWorks));
+    gallery.innerHTML = returnWorks(allWorks);
   } catch (err) {
     console.log(err);
   }
