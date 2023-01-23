@@ -1,0 +1,14 @@
+.btn {
+  padding: 0.5rem 0.5rem;
+  border: 1px solid $colour-primary;
+  border-radius: 60px;
+  margin: 3rem 0.5rem;
+  width: fit-content;
+  color: $colour-primary;
+  background-color: $colour-white;
+
+  &--focus {
+    color: $colour-white;
+    background-color: $colour-primary;
+  }
+}
