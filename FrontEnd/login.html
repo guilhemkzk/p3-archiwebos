@@ -35,14 +35,29 @@
         <article>
           <h2>Log In</h2>
 
-          <form class="login-form" action="./js/login.js" method="post">
+          <form
+            class="login-form"
+            action="javascript:loginUser()"
+            method="post"
+          >
             <label for="email"><b>E-mail</b></label>
-            <input type="email" name="email" required />
+            <input id="email" type="email" name="email" required />
 
             <label for="psw"><b>Mot de passe</b></label>
-            <input type="password" name="psw" required />
+            <input id="password" type="password" name="psw" required />
 
-            <button class="btn btn--focus btn-typo" type="submit">
+            <div style="display: none" id="error401">
+              Nom d'utilisateur ou mot de passe incorrect
+            </div>
+            <div style="display: none" id="error404">
+              Nom d'utilisateur incorrect
+            </div>
+
+            <button
+              class="btn btn--focus btn-typo"
+              type="submit"
+              id="btn-connexion"
+            >
               Se connecter
             </button>
           </form>

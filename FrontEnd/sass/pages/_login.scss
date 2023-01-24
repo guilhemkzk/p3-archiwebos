@@ -19,3 +19,9 @@
 section {
   flex: 1;
 }
+
+#error401,
+#error404 {
+  color: $colour-invalid;
+  font-weight: 700;
+}
