@@ -87,10 +87,10 @@ section {
   flex: 1;
 }
 
-#error401,
-#error404 {
+.error-message {
   color: #db464b;
   font-weight: 700;
+  display: none;
 }
 
 /*# sourceMappingURL=style_add.css.map */

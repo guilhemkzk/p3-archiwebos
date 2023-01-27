@@ -20,8 +20,8 @@ section {
   flex: 1;
 }
 
-#error401,
-#error404 {
+.error-message {
   color: $colour-invalid;
   font-weight: 700;
+  display: none;
 }

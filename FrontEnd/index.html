@@ -15,6 +15,13 @@
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
+    <div class="bandeau-edition" id="bandeau-edition">
+      <div class="edition">
+        <i class="fa-regular fa-pen-to-square"></i>
+        <p>modifier</p>
+      </div>
+      <div class="publier-changements-btn">publier les changements</div>
+    </div>
     <header>
       <a href="./index.html">
         <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1></a
@@ -23,17 +30,32 @@
         <ul>
           <li>projets</li>
           <li>contact</li>
-          <a href="./login.html"><li>login</li></a>
+          <a href="./login.html" id="login"><li>login</li></a>
+          <a href="javascript:logout();" id="logout"><li>logout</li></a>
           <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
         </ul>
       </nav>
     </header>
     <main>
       <section id="introduction">
-        <figure>
-          <img src="./assets/images/sophie-bluel.png" alt="" />
-        </figure>
+        <div class="photo-profil">
+          <figure>
+            <img src="./assets/images/sophie-bluel.png" alt="" />
+          </figure>
+          <figcaption>
+            <div class="edition">
+              <i class="fa-regular fa-pen-to-square"></i>
+              <p>modifier</p>
+            </div>
+          </figcaption>
+        </div>
+
         <article>
+          <div class="edition">
+            <i class="fa-regular fa-pen-to-square"></i>
+            <p>modifier</p>
+          </div>
+
           <h2>Designer d'espace</h2>
           <p>
             Je raconte votre histoire, je valorise vos idées. Je vous accompagne
@@ -54,7 +76,14 @@
       </section>
 
       <section id="portfolio">
-        <h2>Mes Projets</h2>
+        <div class="titre-portfolio">
+          <h2>Mes Projets</h2>
+          <div class="edition">
+            <i class="fa-regular fa-pen-to-square"></i>
+            <p>modifier</p>
+          </div>
+        </div>
+
         <div id="tri"></div>
         <div id="gallery-container"></div>
       </section>
@@ -83,5 +112,10 @@
 
     <script type="text/javascript" src="js/loadWorks.js"></script>
     <script type="text/javascript" src="js/filterWorks.js"></script>
+    <script
+      <script
+      src="https://kit.fontawesome.com/880e844b52.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
