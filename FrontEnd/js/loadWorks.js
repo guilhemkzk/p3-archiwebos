@@ -120,3 +120,36 @@ async function logout() {
   // Redirect to the index.html page (reload)
   location.href = "./index.html";
 }
+
+// --------------------- MODAL --------------------- //
+
+// OPEN THE MODAL //
+
+async function getModal() {
+  var modal = document.getElementById("modale");
+  modal.style.display = "flex";
+}
+
+// CLOSE THE MODAL //
+var modal = document.getElementById("modale");
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+  modal.style.display = "none";
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
+// // ------------ EVENT LISTENER FOR THE EDITING LINK FOR THE GALLERY ----------- //
+// window.addEventListener("load", function () {
+//   // Get the button that opens the modal
+//   let openModalLink = document.getElementById("edition-gallery");
+//   openModalLink.addEventListener("click", function () {
+//     modal.style.display = "block";
+//   });
+// });

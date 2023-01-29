@@ -37,6 +37,15 @@
       </nav>
     </header>
     <main>
+      <div id="modale" class="modale">
+        <!-- Contenu de la modale -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <!-- Croix de fermeture -->
+          <p>Ceci est un texte dans une modale.</p>
+          <!-- Contenu -->
+        </div>
+      </div>
       <section id="introduction">
         <div class="photo-profil">
           <figure>
@@ -78,9 +87,12 @@
       <section id="portfolio">
         <div class="titre-portfolio">
           <h2>Mes Projets</h2>
-          <div class="edition">
-            <i class="fa-regular fa-pen-to-square"></i>
-            <p>modifier</p>
+
+          <div class="edition" id="edition-gallery">
+            <a href="#" onclick="getModal()" class="edition">
+              <i class="fa-regular fa-pen-to-square"></i>
+              <p>modifier</p>
+            </a>
           </div>
         </div>
 
