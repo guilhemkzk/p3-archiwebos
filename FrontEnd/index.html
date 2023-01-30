@@ -13,6 +13,7 @@
 
     <meta name="description" content="" />
     <link rel="stylesheet" href="./assets/style.css" />
+    <link rel="stylesheet" href="./assets/style_add.css" />
   </head>
   <body>
     <div class="bandeau-edition" id="bandeau-edition">
@@ -40,10 +41,20 @@
       <div id="modale" class="modale">
         <!-- Contenu de la modale -->
         <div class="modal-content">
-          <span class="close">&times;</span>
           <!-- Croix de fermeture -->
-          <p>Ceci est un texte dans une modale.</p>
+          <div class="close-cross"><span class="close">&times;</span></div>
           <!-- Contenu -->
+          <h3>Galerie photo</h3>
+          <div id="edit-gallery" class="edit-gallery"></div>
+          <hr />
+          <button
+            class="btn btn--focus btn-typo"
+            type="button"
+            id="btn-add-picture"
+          >
+            Ajouter une photo
+          </button>
+          <p>Supprimer la galerie</p>
         </div>
       </div>
       <section id="introduction">
@@ -124,6 +135,7 @@
 
     <script type="text/javascript" src="js/loadWorks.js"></script>
     <script type="text/javascript" src="js/filterWorks.js"></script>
+    <script type="text/javascript" src="js/connexion.js"></script>
     <script
       <script
       src="https://kit.fontawesome.com/880e844b52.js"

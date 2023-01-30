@@ -249,7 +249,7 @@ li:hover {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1em;
+  margin-bottom: 3em;
 }
 
 #portfolio .edition {
@@ -361,8 +361,7 @@ footer nav ul {
   display: none;
   flex-direction: row;
   justify-content: center;
-  text-align: center;
-  height: 3rem;
+  height: 4rem;
   width: 100%;
   background-color: black;
   color: white;
@@ -400,24 +399,113 @@ footer nav ul {
 
 /* Modal Content */
 .modal-content {
-  background-color: #fefefe;
+  background-color: #ffffff;
+  width: 50%;
+  height: fit-content;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 2rem;
 }
 
 /* The Close Button */
 .close {
-  color: #aaa;
+  position: relative;
+  text-align: right;
+  color: black;
   float: right;
   font-size: 28px;
-  font-weight: bold;
+  font-weight: 400;
 }
 
 .close:hover,
 .close:focus {
   color: black;
+  font-weight: 900;
   text-decoration: none;
   cursor: pointer;
+}
+
+.edit-gallery {
+  padding: 0 5rem;
+  margin-bottom: 2rem;
+}
+
+.modal-content p {
+  color: #d65353;
+}
+
+.modal-content h3 {
+  font-weight: 600;
+  font-size: 26px;
+  text-align: center;
+  line-height: 30.5px;
+  margin-bottom: 2rem;
+}
+
+.modal-content .close-cross {
+  width: 100%;
+  text-align: right;
+}
+
+.modal-content .gallery figcaption {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.modal-content .gallery {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+
+#modal-img-1:hover + #size-icon-1 {
+  display: none;
+}
+
+.trash-can-icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 11;
+  color: #ffffff;
+  background-color: black;
+  background-size: auto;
+  padding: 0.2rem;
+  border-radius: 2px;
+}
+
+#size-icon-1 {
+  display: block;
+}
+
+.size-icon {
+  display: none;
+  position: absolute;
+  top: 5px;
+  right: 25px;
+  z-index: 11;
+  color: #ffffff;
+  background-color: black;
+  background-size: auto;
+  padding: 0.2rem;
+  border-radius: 2px;
+}
+
+.modal-overlay-container {
+  position: relative;
+}
+
+hr {
+  width: 80%;
+}
+
+.modal-content button {
+  padding: 0.5rem 2rem;
 }
