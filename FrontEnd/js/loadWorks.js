@@ -137,12 +137,14 @@ async function getModal() {
             (allWorks) => `
             <div class="modal-overlay-container">
 
-              <div class="trash-can-icon">
+              <div class="trash-can-icon" id="trash-can-icon-${allWorks.id}">
+              <a href="#" onclick="javascript:deleteWork(${allWorks.id});">
                 <i class="fa-regular fa-trash-can fa-sm"></i>
+              </a>
               </div>
         <figure>
         <div class="size-icon" id="size-icon-${allWorks.id}">
-          <i class="fa-solid fa-arrows-up-down-left-right"></i>
+        <i class="fa-solid fa-arrows-up-down-left-right"></i>
         </div>
         <img id="modal-img-${allWorks.id}" crossorigin="anonymous" src="${allWorks.imageUrl}" alt="${allWorks.title}" />
         <figcaption>éditer</figcaption>
@@ -175,3 +177,60 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
+
+//----------------------------- DELETE A WORK --------------------------------//
+
+async function deleteWork(id) {
+  // Get the token of the user
+
+  const userToken = localStorage.getItem("token");
+  console.log(userToken);
+  // IF the user is connected (true)
+  if (userToken !== null) {
+    // API CALL TO DELETE THE WORK
+
+    try {
+      // API Call : POST to compare ID and PSW of the user to the DB
+      const res = await fetch("http://localhost:5678/api/works/" + id, {
+        method: "DELETE",
+        headers: {
+          Authorization: "Bearer " + userToken,
+        },
+      });
+
+      // Considering possible error messages and displaying error message if applicable
+      // IF THERE IS AN ERROR CODE, DISPLAY ERROR MESSAGE
+      if (res.status === 401) {
+        window.alert("Erreur, manoeuvre non autorisée");
+        // Changing the style of the div containing the error message to block to display it
+        // IF THERE IS NO ERROR CODE, ALLOW CONNEXION
+      } else if (res.status === 500) {
+        window.alert(
+          "Une erreur est survenue, veuillez réessayer ultérieurement"
+        );
+      } else {
+        // Create a variable to get the ID and TOKEN proving that the connexion is OK
+        window.alert("Element supprimé avec succès");
+        location.href = "./index.html";
+        // Loading the index page by calling loadWorks.js
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  } else {
+    console.log("Erreur");
+  }
+}
+
+// LISTEN TO THE EVENT OF SELECTING A TRASH ICON TO CALL FUNCTION
+
+// //EVENTS LISTENER
+
+// for (let i = 0; i < trashIcons.length; i++) {
+//   //For each categorie
+//   trashIcons.item(trashIcons[i].id).addEventListener("click", function () {
+//     //Create an event listener for each button
+//     console.log("click");
+//     //Call the function that filter the works for each categorie that will write directly in the gallery, erasing previous content
+//   });
+// }
