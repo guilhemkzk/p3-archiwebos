@@ -389,7 +389,7 @@ footer nav ul {
 
 /* ------------------------------MODALE-------------------------- */
 
-/* The Modal (background) */
+/* Arrière plan Modale */
 .modale {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -403,7 +403,7 @@ footer nav ul {
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
-/* Modal Content */
+/* Contenu Modale */
 .modal-content {
   background-color: #ffffff;
   width: 50%;
@@ -417,7 +417,7 @@ footer nav ul {
   padding: 2rem 2rem;
 }
 
-/* The Close Button */
+/*  Croix de fermeture */
 .close {
   position: relative;
   text-align: right;
@@ -471,8 +471,8 @@ footer nav ul {
   grid-row-gap: 10px;
 }
 
-#modal-img-1:hover + #size-icon-1 {
-  display: none;
+#modal-fg-1:hover + #size-icon-1 {
+  display: block;
 }
 
 .trash-can-icon {
@@ -485,10 +485,6 @@ footer nav ul {
   background-size: auto;
   padding: 0.2rem;
   border-radius: 2px;
-}
-
-#size-icon-1 {
-  display: block;
 }
 
 .size-icon {

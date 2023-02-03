@@ -110,7 +110,7 @@ getCategories();
 //   }
 // }
 
-// OPEN THE MODAL //
+//---------------- OPEN THE MODAL ---------------------------------//
 
 async function getModal() {
   var modal = document.getElementById("modale");
@@ -138,18 +138,21 @@ async function getModal() {
             <div class="modal-overlay-container">
 
               <div class="trash-can-icon" id="trash-can-icon-${allWorks.id}">
-              <a href="#" onclick="javascript:deleteWork(${allWorks.id});">
-                <i class="fa-regular fa-trash-can fa-sm"></i>
-              </a>
+                <a href="#" onclick="javascript:deleteWork(${allWorks.id});">
+                  <i class="fa-regular fa-trash-can fa-sm"></i>
+                </a>
               </div>
-        <figure>
-        <div class="size-icon" id="size-icon-${allWorks.id}">
-        <i class="fa-solid fa-arrows-up-down-left-right"></i>
-        </div>
-        <img id="modal-img-${allWorks.id}" crossorigin="anonymous" src="${allWorks.imageUrl}" alt="${allWorks.title}" />
-        <figcaption>éditer</figcaption>
-        </figure>
-        </div>`
+
+              <figure id="modal-fg-${allWorks.id}">
+                <img id="modal-img-${allWorks.id}" crossorigin="anonymous" src="${allWorks.imageUrl}" alt="${allWorks.title}" />
+                <figcaption>éditer</figcaption>
+              </figure>
+
+              <div class="size-icon" id="size-icon-${allWorks.id}">
+                <i class="fa-solid fa-arrows-up-down-left-right"></i>
+              </div>
+
+            </div>`
           )
           .join("") +
         "</div>"
