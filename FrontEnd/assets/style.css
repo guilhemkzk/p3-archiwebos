@@ -225,25 +225,30 @@ li:hover {
 #introduction img {
   display: block;
   margin: auto;
-  width: 80%;
+  width: 100%;
 }
+
 #introduction figcaption {
   padding-top: 0.8rem;
-  display: block;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   margin: auto;
-  width: 80%;
+  width: 100%;
 }
 
 #introduction article {
   flex: 1;
+  line-height: 1.3;
+  margin-left: 4rem;
 }
 #introduction h2 {
-  margin-top: 2rem;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 }
 
 #introduction p {
   margin-bottom: 0.5em;
+  margin-right: 3rem;
 }
 
 #portfolio h2 {
@@ -357,6 +362,11 @@ footer nav ul {
   display: none; /* à mettre sur flex pour ajouter, en mode édition */
   /* display: flex; */
   flex-direction: row;
+  align-items: baseline;
+}
+
+.edition i {
+  margin-right: 0.4rem;
 }
 
 #logout {
