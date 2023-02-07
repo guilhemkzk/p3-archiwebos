@@ -56,7 +56,7 @@ getWorks(gallery);
 let filterDiv = document.getElementById("tri");
 
 // FUNCTION TO GET THE CATEGORIES FROM API
-async function getCategories() {
+async function getCategories(location) {
   // initiate variable
   let allCategories;
 
@@ -75,13 +75,13 @@ async function getCategories() {
         .join("");
     };
     // Send the content written in the HTML page
-    filterDiv.innerHTML += returnCategories(allCategories);
+    location.innerHTML += returnCategories(allCategories);
   } catch (err) {
     console.log(err);
   }
 }
 
-getCategories();
+getCategories(filterDiv);
 
 // STEP 2 - ADD AN EVENT LISTENER TO EACH SORTING BUTTON + THE ALL BUTTON
 
@@ -140,35 +140,6 @@ window.addEventListener("load", function () {
   putEventListenerOnButtons();
 });
 
-// window.addEventListener("load", function () {
-//   // Get the button created manually that contain all categories
-//   let allBtn = document.getElementById("btn-all");
-//   //AUTOFOCUS THE ALL BUTTON
-//   document.getElementById("btn-all").focus();
-//   //EVENT LISTENER FOR ALL BUTTON AND LOAD ALL WORKS
-//   allBtn.addEventListener("click", function () {
-//     //call function that get and display all works in the gallery, erasing what was before
-//     getWorks(gallery);
-//   });
-
-//   let filterBtns = document.getElementsByClassName("sorting-btn");
-//   console.log(filterBtns.length);
-//   // Get all the filter buttons created automatically from loadWorks.js using the categories from the API
-//   //EVENTS LISTENERS FOR CATEGORIES BUTTONS AND LOAD WORKS BY CATEGORIES
-//   for (let i = 0; i < filterBtns.length; i++) {
-//     //Get the category id from the id
-//     let btnCategoryId = filterBtns[i].id.charAt(filterBtns[i].id.length - 1);
-//     //For each categorie;
-//     console.log(btnCategoryId);
-//     filterBtns.item(btnCategoryId - 1).addEventListener("click", function () {
-//       //Create an event listener for each button
-//       filterWorks(btnCategoryId);
-
-//       //Call the function that filter the works for each categorie that will write directly in the gallery, erasing previous content
-//     });
-//   }
-// });
-
 // STEP 3 - ACTION : WHEN BUTTON IS CLICKED, FILTER THE GALLERY
 
 // FUNCTION TO FILTER THE WORKS REGARDING THEIR CATEGORY
@@ -206,7 +177,7 @@ async function filterWorks(id) {
 // ----------------------------------------------------------------------------------------- //
 
 async function getModal() {
-  var modal = document.getElementById("modale");
+  var modal = document.getElementById("modal-gallery");
   modal.style.display = "flex";
 
   // CREATING GALLERY IN THE MODAL
@@ -259,19 +230,12 @@ async function getModal() {
 }
 
 // CLOSE THE MODAL //
-var modal = document.getElementById("modale");
+var modal = document.getElementById("modal-gallery");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
   modal.style.display = "none";
-};
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
 };
 
 // ----------------------------------------------------------------------------------------- //
@@ -329,3 +293,76 @@ async function deleteWork(id) {
     console.log(err);
   }
 }
+
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ------------------------- OPENING SECOND MODAL (ADD PICTURE) ------------------------ //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+
+let selectOption = document.getElementById("category-dropdown");
+
+// FUNCTION TO GET THE CATEGORIES FROM API
+async function getListCategories(location) {
+  // initiate variable
+  let allCategories;
+
+  try {
+    // Call API : GET all categories
+    const res = await fetch("http://localhost:5678/api/categories");
+    // Wait for the answer (async) and send it to the variable in json
+    allCategories = await res.json();
+    //Use the categories to create HTML buttons in order to send it to the page
+
+    const returnCategories = (allCategories) => {
+      return allCategories
+        .map(
+          (allCategories) => `
+            <option value="${allCategories.id}">${allCategories.name}</option>`
+        )
+        .join("");
+    };
+    // Send the content written in the HTML page
+    location.innerHTML += returnCategories(allCategories);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+getListCategories(selectOption);
+
+async function getModalPicture() {
+  // Display the second modal
+  let modalAddPicture = document.getElementById("modal-add-picture");
+  modalAddPicture.style.display = "flex";
+
+  // Close the first modal
+  document.getElementById("modal-gallery").style.display = "none";
+
+  // GETTING THE CATEGORIES TO DISPLAY THE DROPDOWN LIST
+}
+
+// CLOSE THE SECOND MODAL (PICTURE) //
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[1];
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+  modalAddPicture.style.display = "none";
+};
+let modalAddPicture = document.getElementById("modal-add-picture");
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == modal || event.target == modalAddPicture) {
+    modalAddPicture.style.display = "none";
+    modal.style.display = "none";
+  }
+};
+
+var returnArrow = document.getElementsByClassName("return-arrow")[0];
+// When the user clicks on arrow, close the second modal and re-open the first one
+returnArrow.onclick = function () {
+  modal.style.display = "flex";
+  modalAddPicture.style.display = "none";
+};

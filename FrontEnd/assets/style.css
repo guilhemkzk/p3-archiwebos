@@ -397,10 +397,10 @@ footer nav ul {
   margin: auto 1rem;
 }
 
-/* ------------------------------MODALE-------------------------- */
+/* ------------------------------MODALE GALLERIE -------------------------- */
 
 /* Arrière plan Modale */
-.modale {
+.modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 10; /* Sit on top */
@@ -524,4 +524,104 @@ hr {
 
 .modal-content button {
   padding: 0.5rem 2rem;
+}
+
+/* ------------------------------MODALE AJOUTER PHOTO -------------------------- */
+
+.import-picture-area {
+  background-color: #e8f1f7;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.modal-content-add-picture {
+  /* padding-left: 2rem;
+  padding-right: 2rem; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.add-picture-form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+#btn-add-picture a {
+  color: #ffffff;
+}
+
+#btn-valid-add-picture {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+#add-picture-form {
+  margin: auto;
+  width: 80%;
+}
+
+#add-picture-form form {
+  text-align: left;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#add-picture-form input,
+select {
+  height: 50px;
+  width: inherit;
+  font-size: 1.2em;
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+#add-picture-form label {
+  margin: 2em 0 1em 0;
+}
+#add-picture-form textarea {
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+#add-picture-form span {
+  margin-bottom: 2rem;
+}
+
+#add-picture-form hr {
+  width: 100%;
+  margin-top: 3rem;
+}
+
+#btn-valid-add-picture {
+  margin: 2rem auto;
+}
+
+.photo-display-area {
+  margin: 1rem auto;
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+}
+
+.photo-display-area i {
+  font-size: 5rem;
+  color: #b9c5cc;
+  display: flex;
+  align-items: center;
+}
+
+.nav-symbols {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: -webkit-fill-available;
 }

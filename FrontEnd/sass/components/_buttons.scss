@@ -11,4 +11,11 @@
     color: $colour-white;
     background-color: $colour-primary;
   }
+
+  &-clear {
+    border: 1px solid $colour-modal-grey-dark;
+    color: $colour-modal-blue;
+    background-color: $colour-modal-grey-dark;
+    margin: 1rem 0.5rem;
+  }
 }

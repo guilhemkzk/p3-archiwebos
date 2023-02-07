@@ -16,9 +16,11 @@
     <link rel="stylesheet" href="./assets/style_add.css" />
 
     <script type="text/javascript" src="js/loadWorks.js" defer></script>
-    <script type="text/javascript" src="js/connexion.js" defer></script>
+    <script type="text/javascript" src="js/checkLogin.js" defer></script>
   </head>
+
   <body>
+    <!-- ____________________BANDEAU EDITION_____________________ -->
     <div class="bandeau-edition" id="bandeau-edition">
       <div class="edition">
         <i class="fa-regular fa-pen-to-square fa-lg"></i>
@@ -27,6 +29,7 @@
       <div class="publier-changements-btn">publier les changements</div>
     </div>
     <header>
+      <!-- ____________________EN TETE_____________________ -->
       <a href="./index.html">
         <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1></a
       >
@@ -41,25 +44,91 @@
       </nav>
     </header>
     <main>
-      <div id="modale" class="modale">
-        <!-- Contenu de la modale -->
-        <div class="modal-content">
-          <!-- Croix de fermeture -->
-          <div class="close-cross"><span class="close">&times;</span></div>
-          <!-- Contenu -->
-          <h3>Galerie photo</h3>
-          <div id="edit-gallery" class="edit-gallery"></div>
-          <hr />
-          <button
-            class="btn btn--focus btn-typo"
-            type="button"
-            id="btn-add-picture"
-          >
-            Ajouter une photo
-          </button>
-          <p>Supprimer la galerie</p>
+      <div id="all-modals">
+        <!-- ____________________MODALE GALLERIE_____________________ -->
+        <div id="modal-gallery" class="modal">
+          <!-- Contenu de la modale -->
+          <div class="modal-content">
+            <!-- Croix de fermeture -->
+            <div class="close-cross"><span class="close">&times;</span></div>
+            <!-- Contenu -->
+            <h3>Galerie photo</h3>
+            <div id="edit-gallery" class="edit-gallery"></div>
+            <hr />
+
+            <button
+              class="btn btn--focus btn-typo"
+              type="button"
+              id="btn-add-picture"
+            >
+              <a href="#" onclick="getModalPicture()">Ajouter une photo</a>
+            </button>
+            <p>Supprimer la galerie</p>
+          </div>
+        </div>
+
+        <!-- ____________________MODALE AJOUTER PHOTO_____________________ -->
+        <div id="modal-add-picture" class="modal">
+          <!-- Contenu de la modale -->
+          <div class="modal-content modal-content-add-picture">
+            <!-- Flèche pour retourner en arrière-->
+            <div class="nav-symbols">
+              <div class="return-arrow">
+                <span class="close"
+                  ><i class="fa-solid fa-arrow-left fa-xs"></i
+                ></span>
+              </div>
+              <!-- Croix de fermeture -->
+              <div class="close-cross"><span class="close">&times;</span></div>
+            </div>
+            <!-- Contenu -->
+            <h3>Ajout photo</h3>
+            <div id="add-picture-form" class="add-picture-form">
+              <form
+                class="add-picture-form"
+                action="javascript:addPicture()"
+                method="post"
+              >
+                <div class="import-picture-area">
+                  <div class="photo-display-area">
+                    <i class="fa-regular fa-image fa-2xl"></i>
+                  </div>
+                  <button
+                    class="btn btn-clear btn-typo"
+                    type="button"
+                    id="btn-choose-picture"
+                  >
+                    + Ajouter photo
+                  </button>
+                  <span>jpg, png : 4mo max</span>
+                </div>
+
+                <label for="titre"><b>Titre</b></label>
+                <input id="titre" type="text" name="titre" required />
+
+                <label for="category"><b>Catégorie</b></label>
+                <select id="category-dropdown" name="category" required>
+                  <option value=""></option>
+                </select>
+
+                <div class="error-message" id="error-picture">
+                  Erreur indéterminée
+                </div>
+                <hr />
+                <button
+                  class="btn btn--focus btn-typo"
+                  type="submit"
+                  id="btn-valid-add-picture"
+                  disabled
+                >
+                  Valider
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
+      <!-- ____________________INTRODUCTION_____________________ -->
       <section id="introduction">
         <div class="photo-profil">
           <figure>
@@ -92,7 +161,7 @@
           </p>
         </article>
       </section>
-
+      <!-- ____________________PORTFOLIO / GALLERIE_____________________ -->
       <section id="portfolio">
         <div class="titre-portfolio">
           <h2>Mes Projets</h2>
@@ -104,12 +173,13 @@
             </a>
           </div>
         </div>
-
+        <!-- ____________________BOUTONS DE TRI_____________________ -->
         <div id="tri">
           <button class="sorting-all" type="button" id="btn-all">Tous</button>
         </div>
         <div id="gallery-container"></div>
       </section>
+      <!-- ____________________FORMULAIRE CONTACT_____________________ -->
       <section id="contact">
         <h2>Contact</h2>
         <p>Vous avez un projet ? Discutons-en !</p>

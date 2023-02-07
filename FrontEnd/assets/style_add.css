@@ -44,6 +44,12 @@ footer {
   color: #fff;
   background-color: #1d6154;
 }
+.btn-clear {
+  border: 1px solid #cbd6dc;
+  color: #306685;
+  background-color: #cbd6dc;
+  margin: 1rem 0.5rem;
+}
 
 .login-form {
   text-align: left;
