@@ -90,24 +90,40 @@
                 method="post"
               >
                 <div class="import-picture-area">
-                  <div class="photo-display-area">
+                  <div id="photo-display-area" class="photo-display-area">
                     <i class="fa-regular fa-image fa-2xl"></i>
                   </div>
-                  <button
+                  <div id="image-preview" class="image-preview">
+                    <output></output>
+                  </div>
+
+                  <input
                     class="btn btn-clear btn-typo"
-                    type="button"
+                    type="file"
+                    onclick=""
+                    value="+ Ajouter photo"
+                    accept="image/jpeg, image/png, image/jpg"
                     id="btn-choose-picture"
-                  >
-                    + Ajouter photo
-                  </button>
+                  />
                   <span>jpg, png : 4mo max</span>
                 </div>
 
                 <label for="titre"><b>Titre</b></label>
-                <input id="titre" type="text" name="titre" required />
+                <input
+                  class="add-pic-input"
+                  id="titre"
+                  type="text"
+                  name="titre"
+                  required
+                />
 
                 <label for="category"><b>Catégorie</b></label>
-                <select id="category-dropdown" name="category" required>
+                <select
+                  class="add-pic-input"
+                  id="category-dropdown"
+                  name="category"
+                  required
+                >
                   <option value=""></option>
                 </select>
 

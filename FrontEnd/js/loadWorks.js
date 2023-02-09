@@ -165,10 +165,6 @@ async function filterWorks(id) {
     console.log(err);
   }
 }
-// window.addEventListener("load", function () {
-// document.addEventListener("DOMContentLoaded", function(){
-//   // Code here waits to run until the DOM is loaded.
-// });
 
 // ----------------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------------- //
@@ -302,6 +298,17 @@ async function deleteWork(id) {
 
 let selectOption = document.getElementById("category-dropdown");
 
+// FUNCTION CALLED TO DISPLAY THE SECOND MODAL
+async function getModalPicture() {
+  // Display the second modal
+  let modalAddPicture = document.getElementById("modal-add-picture");
+  modalAddPicture.style.display = "flex";
+
+  // Close the first modal
+  document.getElementById("modal-gallery").style.display = "none";
+}
+
+// GETTING THE CATEGORIES TO DISPLAY THE DROPDOWN LIST
 // FUNCTION TO GET THE CATEGORIES FROM API
 async function getListCategories(location) {
   // initiate variable
@@ -331,17 +338,6 @@ async function getListCategories(location) {
 
 getListCategories(selectOption);
 
-async function getModalPicture() {
-  // Display the second modal
-  let modalAddPicture = document.getElementById("modal-add-picture");
-  modalAddPicture.style.display = "flex";
-
-  // Close the first modal
-  document.getElementById("modal-gallery").style.display = "none";
-
-  // GETTING THE CATEGORIES TO DISPLAY THE DROPDOWN LIST
-}
-
 // CLOSE THE SECOND MODAL (PICTURE) //
 
 // Get the <span> element that closes the modal
@@ -352,17 +348,67 @@ span.onclick = function () {
 };
 let modalAddPicture = document.getElementById("modal-add-picture");
 
-// When the user clicks anywhere outside of the modal, close it
+////////////////// THIS IS FOR THE TWO MODALS //////////////////////////////////
+// When the user clicks anywhere outside of the modals, close it
 window.onclick = function (event) {
   if (event.target == modal || event.target == modalAddPicture) {
     modalAddPicture.style.display = "none";
     modal.style.display = "none";
   }
 };
+///////////////////////////////////////////////////////////////////////////////////
 
+// RETURN ARROW OF THE SECOND MODAL TO RETURN TO THE FIRST ONE
 var returnArrow = document.getElementsByClassName("return-arrow")[0];
 // When the user clicks on arrow, close the second modal and re-open the first one
 returnArrow.onclick = function () {
   modal.style.display = "flex";
   modalAddPicture.style.display = "none";
 };
+
+// ----------- UPLOAD PICTURE FROM THE SECOND MODAL ------------------//
+
+// Get the html elements for input image
+let input = document.querySelector("input");
+// Get the html elements for output image > to display the preview
+let output = document.querySelector("output");
+// Create an empty array to contain the image
+let imagesArray = [];
+
+// Put an event Listener on the input file; if it changes
+input.addEventListener("change", function () {
+  // Get the file chosen by the user
+  const file = input.files;
+  // Add the file into the array
+  imagesArray.push(file[0]);
+  // Function to display the image
+  uploadPicture();
+});
+
+function uploadPicture() {
+  let images = "";
+  // For each image on the index of the arraw, create a div that will
+  // allow to display the image in the page
+  imagesArray.forEach((image, index) => {
+    images += `<div class="image">
+                <img src="${URL.createObjectURL(image)}" alt="image">
+              </div>`;
+  });
+  // Push the HTML code into the output div and erase previous code
+  output.innerHTML = images;
+  let photoDisplayArea = document.getElementById("photo-display-area");
+  let imagePreview = document.getElementById("image-preview");
+  photoDisplayArea.style.display = "none";
+  imagePreview.style.display = "flex";
+}
+
+// // Function to delete an image from the arraw, regarding its index
+// function deleteImage(index) {
+//   imagesArray.splice(index, 1);
+//   displayImages();
+// }
+// {`<span onclick="deleteImage(${index})">&times;</span>`}
+
+// ----------- SEND PICTURE IN THE SERVER ------------------//
+
+async function sendPicture() {}

@@ -574,7 +574,7 @@ hr {
   width: 100%;
 }
 
-#add-picture-form input,
+#add-picture-form .add-pic-input,
 select {
   height: 50px;
   width: inherit;
@@ -582,6 +582,13 @@ select {
   border: none;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+
+#btn-choose-picture {
+  width: fit-content;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
 #add-picture-form label {
   margin: 2em 0 1em 0;
 }
@@ -624,4 +631,55 @@ select {
   flex-direction: row;
   justify-content: space-between;
   width: -webkit-fill-available;
+}
+
+/* ------------------------------DISPLAY PREVIEW IMAGE -------------------------- */
+
+output {
+  width: 100%;
+  min-height: 150px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 15px;
+  position: relative;
+  border-radius: 5px;
+}
+
+output .image {
+  height: 150px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  position: relative;
+}
+
+output .image img {
+  height: 100%;
+  width: 100%;
+}
+
+output .image span {
+  position: absolute;
+  top: -4px;
+  right: 4px;
+  cursor: pointer;
+  font-size: 22px;
+  color: white;
+}
+
+output .image span:hover {
+  opacity: 0.8;
+}
+
+output .span--hidden {
+  visibility: hidden;
+}
+
+.photo-display-area {
+  display: flex;
+}
+
+.image-preview {
+  display: none;
 }
