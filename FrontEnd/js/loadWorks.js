@@ -296,7 +296,7 @@ async function deleteWork(id) {
 // ----------------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------------- //
 
-let selectOption = document.getElementById("category-dropdown");
+let selectOption = document.getElementById("category");
 
 // FUNCTION CALLED TO DISPLAY THE SECOND MODAL
 async function getModalPicture() {
@@ -409,6 +409,108 @@ function uploadPicture() {
 // }
 // {`<span onclick="deleteImage(${index})">&times;</span>`}
 
-// ----------- SEND PICTURE IN THE SERVER ------------------//
+// ---------------------------------------------------------------//
+// ----------------- SEND PICTURE IN THE SERVER ------------------//
+// ---------------------------------------------------------------//
 
-async function sendPicture() {}
+// Get the button that validate the form
+// let validateBtnSendPicture = document.getElementById("btn-valid-add-picture");
+// console.log(validateBtnSendPicture.value);
+// //remove disable parameter
+// if (validateBtnSendPicture.value != null) {
+//   validateBtnSendPicture.disabled = false;
+// }
+
+formElem.onsubmit = async (e) => {
+  e.preventDefault();
+
+  // IF GUARDIAN
+  let token = isConnected();
+
+  if (!token) {
+    console.log("Utilisateur non connecté");
+    return false;
+  }
+
+  let formElem = document.getElementById("formElem");
+
+  try {
+    // API Call : POST to send the image and data in the server
+    const res = await fetch("http://localhost:5678/api/works", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        Authorization: "Bearer " + token,
+      },
+      // Convert the JS value into json string to write the body
+      body: new FormData(formElem),
+    });
+
+    // Considering possible error messages and displaying error message if applicable
+    // IF THERE IS AN ERROR CODE, DISPLAY ERROR MESSAGE
+    if (res.status === 401 || res.status === 404) {
+      console.log("erreur 401 ou 404");
+      // errMessage.style.display = "block";
+      // Changing the style of the div containing the error message to block to display it
+    } else if (res.status === 201) {
+      // Create a variable to get the ID and TOKEN proving that the connexion is OK
+      let response = await res.json();
+      console.log(response);
+      // Loading the index page by calling loadWorks.js
+      // location.href = "./index.html";
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+// async function sendPicture() {
+//   // Get the elements input by the user
+
+//   let formElem = document.getElementById("form-elem");
+//   let newPictureForm = new FormData();
+//   newPictureForm.append("image", document.getElementById("image").value);
+//   newPictureForm.append("title", document.getElementById("title").value);
+//   newPictureForm.append(
+//     "category",
+//     parseInt(document.getElementById("category").value)
+//   );
+
+//   // IF GUARDIAN
+//   let token = isConnected();
+
+//   if (!token) {
+//     console.log("Utilisateur non connecté");
+//     return false;
+//   }
+
+//   try {
+//     // API Call : POST to send the image and data in the server
+//     const res = await fetch("http://localhost:5678/api/works", {
+//       method: "POST",
+//       headers: {
+//         Accept: "application/json",
+//         Authorization: "Bearer " + token,
+//       },
+//       // Convert the JS value into json string to write the body
+//       body: newPictureForm,
+//     });
+
+//     // Considering possible error messages and displaying error message if applicable
+//     // IF THERE IS AN ERROR CODE, DISPLAY ERROR MESSAGE
+//     if (res.status === 401 || res.status === 404) {
+//       console.log("erreur 401 ou 404");
+//       // errMessage.style.display = "block";
+//       // Changing the style of the div containing the error message to block to display it
+//     } else if (res.status === 201) {
+//       // Create a variable to get the ID and TOKEN proving that the connexion is OK
+//       let response = await res.json();
+//       console.log(response);
+//       // Loading the index page by calling loadWorks.js
+//       location.href = "./index.html";
+//     }
+//   } catch (err) {
+//     console.log(err);
+//   }
+//   // ELSE, IF THE USER EMAIL IS INVALID :
+// }

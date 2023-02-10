@@ -50,6 +50,11 @@ footer {
   background-color: #cbd6dc;
   margin: 1rem 0.5rem;
 }
+.btn-disabled {
+  border: 1px solid #a7a7a7;
+  background-color: #a7a7a7;
+  color: white;
+}
 
 .login-form {
   text-align: left;

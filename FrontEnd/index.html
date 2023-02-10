@@ -85,9 +85,10 @@
             <h3>Ajout photo</h3>
             <div id="add-picture-form" class="add-picture-form">
               <form
+                enctype="multipart/form-data"
                 class="add-picture-form"
-                action="javascript:addPicture()"
                 method="post"
+                id="formElem"
               >
                 <div class="import-picture-area">
                   <div id="photo-display-area" class="photo-display-area">
@@ -100,10 +101,10 @@
                   <input
                     class="btn btn-clear btn-typo"
                     type="file"
-                    onclick=""
                     value="+ Ajouter photo"
                     accept="image/jpeg, image/png, image/jpg"
-                    id="btn-choose-picture"
+                    id="image"
+                    name="image"
                   />
                   <span>jpg, png : 4mo max</span>
                 </div>
@@ -111,34 +112,32 @@
                 <label for="titre"><b>Titre</b></label>
                 <input
                   class="add-pic-input"
-                  id="titre"
+                  id="title"
                   type="text"
-                  name="titre"
+                  name="title"
                   required
                 />
 
                 <label for="category"><b>Catégorie</b></label>
                 <select
                   class="add-pic-input"
-                  id="category-dropdown"
+                  id="category"
                   name="category"
                   required
                 >
                   <option value=""></option>
                 </select>
 
-                <div class="error-message" id="error-picture">
+                <!-- <div class="error-message" id="error-picture">
                   Erreur indéterminée
-                </div>
+                </div> -->
                 <hr />
-                <button
-                  class="btn btn--focus btn-typo"
+                <input
+                  class="btn btn-disabled btn-typo"
                   type="submit"
                   id="btn-valid-add-picture"
-                  disabled
-                >
-                  Valider
-                </button>
+                  value="Valider"
+                />
               </form>
             </div>
           </div>

@@ -481,10 +481,6 @@ footer nav ul {
   grid-row-gap: 10px;
 }
 
-#modal-fg-1:hover + #size-icon-1 {
-  display: block;
-}
-
 .trash-can-icon {
   position: absolute;
   top: 5px;
@@ -508,6 +504,10 @@ footer nav ul {
   background-size: auto;
   padding: 0.2rem;
   border-radius: 2px;
+}
+
+#size-icon-1 {
+  display: flex;
 }
 
 .trash-can-icon a {
@@ -554,11 +554,6 @@ hr {
 
 #btn-add-picture a {
   color: #ffffff;
-}
-
-#btn-valid-add-picture {
-  padding-left: 5rem;
-  padding-right: 5rem;
 }
 
 #add-picture-form {

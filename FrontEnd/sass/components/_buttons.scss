@@ -18,4 +18,10 @@
     background-color: $colour-modal-grey-dark;
     margin: 1rem 0.5rem;
   }
+
+  &-disabled {
+    border: 1px solid $colour-btn-disabled;
+    background-color: $colour-btn-disabled;
+    color: white;
+  }
 }
