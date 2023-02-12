@@ -539,8 +539,6 @@ hr {
 }
 
 .modal-content-add-picture {
-  /* padding-left: 2rem;
-  padding-right: 2rem; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -594,6 +592,7 @@ select {
 
 #add-picture-form span {
   margin-bottom: 2rem;
+  margin-top: 0.5rem;
 }
 
 #add-picture-form hr {
@@ -626,6 +625,21 @@ select {
   flex-direction: row;
   justify-content: space-between;
   width: -webkit-fill-available;
+}
+
+.hidden-btn-input {
+  padding: 0.5rem 2rem;
+  border: 1px solid #cbd6dc;
+  border-radius: 60px;
+  color: #306685;
+  background-color: #cbd6dc;
+  font-family: "Syne";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  margin: 1rem 0.5rem;
 }
 
 /* ------------------------------DISPLAY PREVIEW IMAGE -------------------------- */
