@@ -50,7 +50,7 @@ getWorks(gallery);
 // ----------------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------------- //
 
-// STEP 1 - GETTING CATEGORIES FROM API AND CREATING THE HTML BUTTONS + THE ALL BUTTON
+// STEP 1 - GETTING CATEGORIES FROM API AND CREATING THE HTML BUTTONS
 
 // Get the id of the element containing the sorting buttons
 let filterDiv = document.getElementById("tri");
@@ -76,69 +76,45 @@ async function getCategories(location) {
     };
     // Send the content written in the HTML page
     location.innerHTML += returnCategories(allCategories);
+
+    // STEP 2 - ADD AN EVENT LISTENER TO EACH SORTING BUTTON + THE ALL BUTTON
+
+    // Get the elements where the buttons are created just before and sent to HTML
+    let filterBtns = document.getElementsByClassName("sorting-btn");
+    console.log(filterBtns.length);
+
+    //EVENTS LISTENERS FOR CATEGORIES BUTTONS AND LOAD WORKS BY CATEGORIES
+    for (let i = 0; i < filterBtns.length; i++) {
+      //Get the category id from the id
+      let btnCategoryId = filterBtns[i].id.charAt(filterBtns[i].id.length - 1);
+      //For each categorie
+      console.log(btnCategoryId);
+      filterBtns.item(btnCategoryId - 1).addEventListener("click", function () {
+        //Create an event listener for each button
+        filterWorks(btnCategoryId);
+
+        //Call the function that filter the works for each categorie that will write directly in the gallery, erasing previous content
+      });
+    }
+
+    // STEP 0 - CREATING THE EVENT LISTENER FOR THE ALREADY EXISTING ALL BUTTON
+    // Get the button from the html
+    let allBtn = document.getElementById("btn-all");
+
+    // Autofocus on the ALL button
+    document.getElementById("btn-all").focus();
+
+    //EVENT LISTENER FOR ALL BUTTON AND LOAD ALL WORKS
+    allBtn.addEventListener("click", function () {
+      //call function that get and display all works in the gallery, erasing what was before
+      getWorks(gallery);
+    });
   } catch (err) {
     console.log(err);
   }
 }
 
 getCategories(filterDiv);
-
-// STEP 2 - ADD AN EVENT LISTENER TO EACH SORTING BUTTON + THE ALL BUTTON
-
-function waitForElm(selector) {
-  return new Promise((resolve) => {
-    if (document.querySelector(selector)) {
-      return resolve(document.querySelector(selector));
-    }
-
-    const observer = new MutationObserver((mutations) => {
-      if (document.querySelector(selector)) {
-        resolve(document.querySelector(selector));
-        observer.disconnect();
-      }
-    });
-
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true,
-    });
-  });
-}
-
-async function putEventListenerOnButtons() {
-  await waitForElm(".sorting-btn");
-
-  let allBtn = document.getElementById("btn-all");
-
-  //AUTOFOCUS THE ALL BUTTON
-  document.getElementById("btn-all").focus();
-  //EVENT LISTENER FOR ALL BUTTON AND LOAD ALL WORKS
-  allBtn.addEventListener("click", function () {
-    //call function that get and display all works in the gallery, erasing what was before
-    getWorks(gallery);
-  });
-
-  let filterBtns = document.getElementsByClassName("sorting-btn");
-  console.log(filterBtns.length);
-  // Get all the filter buttons created automatically from loadWorks.js using the categories from the API
-  //EVENTS LISTENERS FOR CATEGORIES BUTTONS AND LOAD WORKS BY CATEGORIES
-  for (let i = 0; i < filterBtns.length; i++) {
-    //Get the category id from the id
-    let btnCategoryId = filterBtns[i].id.charAt(filterBtns[i].id.length - 1);
-    //For each categorie;
-    console.log(btnCategoryId);
-    filterBtns.item(btnCategoryId - 1).addEventListener("click", function () {
-      //Create an event listener for each button
-      filterWorks(btnCategoryId);
-
-      //Call the function that filter the works for each categorie that will write directly in the gallery, erasing previous content
-    });
-  }
-}
-
-window.addEventListener("load", function () {
-  putEventListenerOnButtons();
-});
 
 // STEP 3 - ACTION : WHEN BUTTON IS CLICKED, FILTER THE GALLERY
 
