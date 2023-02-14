@@ -1,0 +1,11 @@
+footer {
+  min-height: 50px;
+}
+
+/* __________________STICKY FOOTER__________________ */
+
+.footer {
+  flex-shrink: 0; /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
+  padding: 20px;
+  margin: 0 100px;
+}

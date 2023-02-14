@@ -20,7 +20,7 @@ if (isUserConnected) {
   loginOption.style.display = "none";
 
   //Display the black edition bar using "display : flex"
-  let blackStripEdition = document.getElementById("bandeau-edition");
+  let blackStripEdition = document.getElementById("edition-banner");
   blackStripEdition.style.display = "flex";
 
   //Hide the filtering options
@@ -41,7 +41,7 @@ if (isUserConnected) {
   let loginOption = document.getElementById("login");
   loginOption.style.display = "block";
   //Hide the black edition bar using "display : none"
-  let blackStripEdition = document.getElementById("bandeau-edition");
+  let blackStripEdition = document.getElementById("edition-banner");
   blackStripEdition.style.display = "none";
 }
 

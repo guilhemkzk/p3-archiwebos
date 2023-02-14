@@ -1,10 +1,24 @@
+// Import from utils
 @import "./utils/variables";
 @import "./utils/mixins";
 
+// Import from base
 @import "./base/base";
 @import "./base/typography";
 
+// Import from components
 @import "./components/buttons";
 @import "./components/form";
+@import "./components/navItems";
 
+// Import from pages
+@import "./pages/index";
 @import "./pages/login";
+@import "./pages/modaleAddPic";
+@import "./pages/modaleGallery";
+
+// Import from layout
+@import "./layout/header";
+@import "./layout/footer";
+@import "./layout/edition";
+@import "./layout/modal";

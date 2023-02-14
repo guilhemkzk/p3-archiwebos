@@ -1,0 +1,29 @@
+/*  Croix de fermeture */
+.close {
+  position: relative;
+  text-align: right;
+  color: black;
+  float: right;
+  font-size: 28px;
+  font-weight: 400;
+
+  &-arrow {
+    font-size: 24px;
+
+    &:hover,
+    &:focus {
+      color: black;
+      font-weight: 900;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    color: black;
+    font-weight: 900;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}

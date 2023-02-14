@@ -12,7 +12,7 @@
     />
 
     <meta name="description" content="" />
-    <link rel="stylesheet" href="./assets/style.css" />
+    <!-- <link rel="stylesheet" href="./assets/style.css" /> -->
     <link rel="stylesheet" href="./assets/style_add.css" />
 
     <script type="text/javascript" src="js/loadWorks.js" defer></script>
@@ -21,12 +21,11 @@
 
   <body>
     <!-- ____________________BANDEAU EDITION_____________________ -->
-    <div class="bandeau-edition" id="bandeau-edition">
-      <div class="edition">
-        <i class="fa-regular fa-pen-to-square fa-lg"></i>
-        <p>mode édition</p>
-      </div>
-      <div class="publier-changements-btn">publier les changements</div>
+    <div class="edition-banner" id="edition-banner">
+      <i class="fa-regular fa-pen-to-square fa-lg"></i>
+      <p>mode édition</p>
+
+      <div class="btn-edition btn typo">publier les changements</div>
     </div>
     <header>
       <!-- ____________________EN TETE_____________________ -->
@@ -44,106 +43,98 @@
       </nav>
     </header>
     <main>
-      <div id="all-modals">
-        <!-- ____________________MODALE GALLERIE_____________________ -->
-        <div id="modal-gallery" class="modal">
-          <!-- Contenu de la modale -->
-          <div class="modal-content">
-            <!-- Croix de fermeture -->
-            <div class="close-cross"><span class="close">&times;</span></div>
-            <!-- Contenu -->
-            <h3>Galerie photo</h3>
-            <div id="edit-gallery" class="edit-gallery"></div>
-            <hr />
+      <!-- ____________________MODALE GALLERIE_____________________ -->
+      <div id="modal-gallery" class="modal">
+        <!-- Contenu de la modale -->
+        <div class="modal-content">
+          <!-- Croix de fermeture -->
+          <span class="close">&times;</span>
+          <!-- Contenu -->
+          <h3>Galerie photo</h3>
+          <div id="edit-gallery" class="edit-gallery"></div>
+          <hr />
 
-            <button
-              class="btn btn--focus btn-typo"
-              type="button"
-              id="btn-add-picture"
-            >
-              <a href="#" onclick="getModalPicture()">Ajouter une photo</a>
-            </button>
-            <p>Supprimer la galerie</p>
-          </div>
+          <button class="btn btn--focus btn-typo" type="button">
+            <a href="#" onclick="getModalPicture()">Ajouter une photo</a>
+          </button>
+          <p>Supprimer la galerie</p>
         </div>
+      </div>
 
-        <!-- ____________________MODALE AJOUTER PHOTO_____________________ -->
-        <div id="modal-add-picture" class="modal">
-          <!-- Contenu de la modale -->
-          <div class="modal-content modal-content-add-picture">
+      <!-- ____________________MODALE AJOUTER PHOTO_____________________ -->
+      <div id="modal-add-picture" class="modal">
+        <!-- Contenu de la modale -->
+        <div class="modal-content modal-content-add-picture">
+          <div class="nav-symbols">
             <!-- Flèche pour retourner en arrière-->
-            <div class="nav-symbols">
-              <div class="return-arrow">
-                <span class="close"
-                  ><i class="fa-solid fa-arrow-left fa-xs"></i
-                ></span>
-              </div>
-              <!-- Croix de fermeture -->
-              <div class="close-cross"><span class="close">&times;</span></div>
-            </div>
-            <!-- Contenu -->
-            <h3>Ajout photo</h3>
-            <div id="add-picture-form" class="add-picture-form">
-              <form
-                enctype="multipart/form-data"
-                class="add-picture-form"
-                method="post"
-                id="formElem"
-              >
-                <div class="import-picture-area">
-                  <div id="photo-display-area" class="photo-display-area">
-                    <i class="fa-regular fa-image fa-2xl"></i>
-                  </div>
-                  <div id="image-preview" class="image-preview">
-                    <output></output>
-                  </div>
-
-                  <label>
-                    <input
-                      hidden
-                      type="file"
-                      accept="image/jpeg, image/png, image/jpg"
-                      id="image"
-                      name="image"
-                    />
-
-                    <span class="hidden-btn-input">+ Ajouter photo</span>
-                  </label>
-
-                  <span>jpg, png : 4mo max</span>
+            <span class="close-arrow"
+              ><i class="fa-solid fa-arrow-left fa-xs"></i
+            ></span>
+            <!-- Croix de fermeture -->
+            <span class="close">&times;</span>
+          </div>
+          <!-- Contenu -->
+          <h3>Ajout photo</h3>
+          <div class="add-picture-form-area">
+            <form
+              class="form form-add-picture"
+              enctype="multipart/form-data"
+              method="post"
+              id="formElem"
+            >
+              <div class="import-picture-area">
+                <div id="photo-display-area" class="photo-display-area">
+                  <i class="fa-regular fa-image fa-2xl"></i>
+                </div>
+                <div id="image-preview" class="image-preview">
+                  <output></output>
                 </div>
 
-                <label for="titre"><b>Titre</b></label>
-                <input
-                  class="add-pic-input"
-                  id="title"
-                  type="text"
-                  name="title"
-                  required
-                />
+                <label>
+                  <input
+                    hidden
+                    type="file"
+                    accept="image/jpeg, image/png, image/jpg"
+                    id="image"
+                    name="image"
+                  />
 
-                <label for="category"><b>Catégorie</b></label>
-                <select
-                  class="add-pic-input"
-                  id="category"
-                  name="category"
-                  required
-                >
-                  <option value=""></option>
-                </select>
+                  <span class="hidden-btn-input">+ Ajouter photo</span>
+                </label>
 
-                <!-- <div class="error-message" id="error-picture">
+                <span>jpg, png : 4mo max</span>
+              </div>
+
+              <label for="titre"><b>Titre</b></label>
+              <input
+                class="choose-pic"
+                id="title"
+                type="text"
+                name="title"
+                required
+              />
+
+              <label for="category"><b>Catégorie</b></label>
+              <select
+                class="add-pic-input"
+                id="category"
+                name="category"
+                required
+              >
+                <option value=""></option>
+              </select>
+
+              <!-- <div class="error-message" id="error-picture">
                   Erreur indéterminée
                 </div> -->
-                <hr />
-                <input
-                  class="btn btn-disabled btn-typo"
-                  type="submit"
-                  id="btn-valid-add-picture"
-                  value="Valider"
-                />
-              </form>
-            </div>
+              <hr />
+              <input
+                class="btn btn-disabled btn-typo"
+                type="submit"
+                id="btn-valid-add-picture"
+                value="Valider"
+              />
+            </form>
           </div>
         </div>
       </div>
@@ -202,7 +193,7 @@
       <section id="contact">
         <h2>Contact</h2>
         <p>Vous avez un projet ? Discutons-en !</p>
-        <form action="#" method="post">
+        <form class="form" action="#" method="post">
           <label for="name">Nom</label>
           <input type="text" name="name" id="name" />
           <label for="email">Email</label>

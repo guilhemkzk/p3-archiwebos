@@ -316,13 +316,13 @@ getListCategories(selectOption);
 
 // CLOSE THE SECOND MODAL (PICTURE) //
 
+let modalAddPicture = document.getElementById("modal-add-picture");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[1];
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
   modalAddPicture.style.display = "none";
 };
-let modalAddPicture = document.getElementById("modal-add-picture");
 
 ////////////////// THIS IS FOR THE TWO MODALS //////////////////////////////////
 // When the user clicks anywhere outside of the modals, close it
@@ -335,7 +335,7 @@ window.onclick = function (event) {
 ///////////////////////////////////////////////////////////////////////////////////
 
 // RETURN ARROW OF THE SECOND MODAL TO RETURN TO THE FIRST ONE
-var returnArrow = document.getElementsByClassName("return-arrow")[0];
+var returnArrow = document.getElementsByClassName("close-arrow")[0];
 // When the user clicks on arrow, close the second modal and re-open the first one
 returnArrow.onclick = function () {
   modal.style.display = "flex";
