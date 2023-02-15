@@ -19,17 +19,6 @@
     margin: 2em 0 1em 0;
   }
 
-  & input[type="submit"] {
-    font-family: "Syne";
-    font-weight: 700;
-    color: white;
-    background-color: #1d6154;
-    margin: 2em auto;
-    width: 180px;
-    text-align: center;
-    border-radius: 60px;
-  }
-
   // FORM VARIATON FOR THE LOGIN
   &-login {
     justify-content: center;

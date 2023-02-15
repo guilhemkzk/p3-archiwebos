@@ -9,7 +9,10 @@
 // Import from components
 @import "./components/buttons";
 @import "./components/form";
-@import "./components/navItems";
+@import "./components/navSymbols";
+@import "./components/modal";
+@import "./components/icons";
+@import "./components/gallery";
 
 // Import from pages
 @import "./pages/index";
@@ -21,4 +24,3 @@
 @import "./layout/header";
 @import "./layout/footer";
 @import "./layout/edition";
-@import "./layout/modal";

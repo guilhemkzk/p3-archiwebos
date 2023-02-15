@@ -1,3 +1,13 @@
+// typo for the all the buttons
+.btn-typo {
+  font-family: "Syne";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+}
+
 // Basic btn with white background and outline primary color
 .btn {
   padding: 0.5rem 0.5rem;
@@ -8,8 +18,20 @@
   color: $colour-primary;
   background-color: $colour-white;
 
+  &-reverse {
+    border: 1px solid $colour-white;
+    color: $colour-white;
+    background-color: $colour-primary;
+
+    & a {
+      color: $colour-white;
+    }
+    &--wide {
+      padding: 0.5rem 2rem;
+    }
+  }
   // primary background and white outline
-  &--focus {
+  &:focus {
     color: $colour-white;
     background-color: $colour-primary;
 
@@ -24,24 +46,13 @@
     color: $colour-modal-blue;
     background-color: $colour-modal-grey-dark;
     margin: 1rem 0.5rem;
+    &--wide {
+      padding: 0.5rem 2rem;
+    }
+    &:hover {
+      border: 1px solid $colour-modal-blue;
+    }
   }
-
-  // dark gray btn - look disabled
-  &-disabled {
-    border: 1px solid $colour-btn-disabled;
-    background-color: $colour-btn-disabled;
-    color: white;
-  }
-}
-
-// typo for the all the buttons
-.btn-typo {
-  font-family: "Syne";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 19px;
-  text-align: center;
 }
 
 // White with black writings (edition mode)
@@ -53,4 +64,13 @@
   color: black;
   text-align: center;
   font-weight: 600;
+}
+
+.btn-disabled {
+  border-radius: 60px;
+  width: fit-content;
+  color: white;
+  background-color: $colour-btn-disabled;
+  margin: 2em auto;
+  padding: 0.2rem 6rem;
 }

@@ -70,7 +70,7 @@ async function getCategories(location) {
       return allCategories
         .map(
           (allCategories) => `
-            <button class="sorting-btn" type="button" id="sorting-btn-${allCategories.id}">${allCategories.name}</button>`
+            <button class="sorting-btn btn btn-typo" type="button" id="sorting-btn-${allCategories.id}">${allCategories.name}</button>`
         )
         .join("");
     };
@@ -155,7 +155,7 @@ async function getModal() {
   // CREATING GALLERY IN THE MODAL
 
   // Get the container of the gallery
-  let editGallery = document.getElementById("edit-gallery");
+  let editGallery = document.getElementById("gallery-edit");
 
   let allWorks;
   try {
@@ -167,7 +167,6 @@ async function getModal() {
     const returnWorks = (allWorks) => {
       // Function to create HTML from API response in order to send it to the gallery
       return (
-        '<div class="gallery">' +
         allWorks
           .map(
             (allWorks) => `
@@ -190,8 +189,7 @@ async function getModal() {
 
             </div>`
           )
-          .join("") +
-        "</div>"
+          .join("") + "</div>"
       );
     };
     // Send the content written in the HTML page (errasing what was written previously)
@@ -372,30 +370,28 @@ function uploadPicture() {
   });
   // Push the HTML code into the output div and erase previous code
   output.innerHTML = images;
-  let photoDisplayArea = document.getElementById("photo-display-area");
+  let photoDisplayArea = document.getElementById("img-display-area");
   let imagePreview = document.getElementById("image-preview");
   photoDisplayArea.style.display = "none";
   imagePreview.style.display = "flex";
 }
 
-// // Function to delete an image from the arraw, regarding its index
-// function deleteImage(index) {
-//   imagesArray.splice(index, 1);
-//   displayImages();
-// }
-// {`<span onclick="deleteImage(${index})">&times;</span>`}
-
 // ---------------------------------------------------------------//
 // ----------------- SEND PICTURE IN THE SERVER ------------------//
 // ---------------------------------------------------------------//
+let imagePreview = document.getElementById("image-preview");
+// Remove disabled the button that validate the form
+let validateBtnSendPicture = document.getElementById("btn-valid-add-picture");
+// If the image is completed
 
-// Get the button that validate the form
-// let validateBtnSendPicture = document.getElementById("btn-valid-add-picture");
-// console.log(validateBtnSendPicture.value);
-// //remove disable parameter
-// if (validateBtnSendPicture.value != null) {
-//   validateBtnSendPicture.disabled = false;
-// }
+// IL FAUT UN DETECTEUR DE CHANGEMENT QUAND UNE IMAGE EST UPLOAD
+// SINON CA NE VERIFIE QU'AU DEBUT
+if (imagePreview.style.display === "flex") {
+  //remove disable parameter
+  validateBtnSendPicture.disabled = false;
+  //Change the appaerance of the btn from disable to normal
+  validateBtnSendPicture.className = "btn btn-typo btn-reverse";
+}
 
 formElem.onsubmit = async (e) => {
   e.preventDefault();

@@ -1,5 +1,11 @@
 footer {
   min-height: 50px;
+
+  & nav ul {
+    display: flex;
+    justify-content: flex-end;
+    margin: 2em;
+  }
 }
 
 /* __________________STICKY FOOTER__________________ */

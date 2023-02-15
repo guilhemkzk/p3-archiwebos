@@ -1,4 +1,7 @@
 /* ------------------------------MODALE AJOUTER PHOTO -------------------------- */
+.add-picture-area {
+  width: 100%;
+}
 
 .import-picture-area {
   display: flex;
@@ -10,55 +13,20 @@
   margin-bottom: 3rem;
 }
 
-.modal-content-add-picture {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.add-picture-form-area {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  margin: auto;
-}
-
-.photo-display-area {
+.img-display-area {
   margin: 1rem auto;
   width: 5rem;
   height: 5rem;
   display: flex;
+  flex-direction: column;
   justify-items: center;
   justify-content: center;
-}
-
-.photo-display-area i {
-  font-size: 5rem;
-  color: #b9c5cc;
-  display: flex;
-  align-items: center;
-}
-
-.nav-symbols {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: -webkit-fill-available;
-}
-
-.hidden-btn-input {
-  padding: 0.5rem 2rem;
-  border: 1px solid #cbd6dc;
-  border-radius: 60px;
-  color: #306685;
-  background-color: #cbd6dc;
-  font-family: "Syne";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 19px;
-  text-align: center;
-  margin: 1rem 0.5rem;
+  & i {
+    font-size: 5rem;
+    color: #b9c5cc;
+    display: flex;
+    align-items: center;
+  }
 }
 
 /* ------------------------------DISPLAY PREVIEW IMAGE -------------------------- */
@@ -72,40 +40,17 @@ output {
   gap: 15px;
   position: relative;
   border-radius: 5px;
-}
-
-output .image {
-  height: 150px;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
-  position: relative;
-}
-
-output .image img {
-  height: 100%;
-  width: 100%;
-}
-
-output .image span {
-  position: absolute;
-  top: -4px;
-  right: 4px;
-  cursor: pointer;
-  font-size: 22px;
-  color: white;
-}
-
-output .image span:hover {
-  opacity: 0.8;
-}
-
-output .span--hidden {
-  visibility: hidden;
-}
-
-.photo-display-area {
-  display: flex;
+  & .image {
+    height: 150px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    position: relative;
+    & img {
+      height: 100%;
+      width: 100%;
+    }
+  }
 }
 
 .image-preview {

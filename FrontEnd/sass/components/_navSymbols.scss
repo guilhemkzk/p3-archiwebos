@@ -1,7 +1,16 @@
 /*  Croix de fermeture */
+
+.nav-symbols {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: -webkit-fill-available;
+}
+
 .close {
   position: relative;
   text-align: right;
+  width: 100%;
   color: black;
   float: right;
   font-size: 28px;

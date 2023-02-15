@@ -50,14 +50,16 @@
           <!-- Croix de fermeture -->
           <span class="close">&times;</span>
           <!-- Contenu -->
-          <h3>Galerie photo</h3>
-          <div id="edit-gallery" class="edit-gallery"></div>
-          <hr />
+          <div class="modal-body">
+            <h3>Galerie photo</h3>
+            <div id="gallery-edit" class="gallery gallery-small"></div>
+            <hr />
 
-          <button class="btn btn--focus btn-typo" type="button">
-            <a href="#" onclick="getModalPicture()">Ajouter une photo</a>
-          </button>
-          <p>Supprimer la galerie</p>
+            <button class="btn btn-reverse btn-typo" type="button">
+              <a href="#" onclick="getModalPicture()">Ajouter une photo</a>
+            </button>
+            <p>Supprimer la galerie</p>
+          </div>
         </div>
       </div>
 
@@ -74,67 +76,69 @@
             <span class="close">&times;</span>
           </div>
           <!-- Contenu -->
-          <h3>Ajout photo</h3>
-          <div class="add-picture-form-area">
-            <form
-              class="form form-add-picture"
-              enctype="multipart/form-data"
-              method="post"
-              id="formElem"
-            >
-              <div class="import-picture-area">
-                <div id="photo-display-area" class="photo-display-area">
-                  <i class="fa-regular fa-image fa-2xl"></i>
-                </div>
-                <div id="image-preview" class="image-preview">
-                  <output></output>
-                </div>
-
-                <label>
-                  <input
-                    hidden
-                    type="file"
-                    accept="image/jpeg, image/png, image/jpg"
-                    id="image"
-                    name="image"
-                  />
-
-                  <span class="hidden-btn-input">+ Ajouter photo</span>
-                </label>
-
-                <span>jpg, png : 4mo max</span>
-              </div>
-
-              <label for="titre"><b>Titre</b></label>
-              <input
-                class="choose-pic"
-                id="title"
-                type="text"
-                name="title"
-                required
-              />
-
-              <label for="category"><b>Catégorie</b></label>
-              <select
-                class="add-pic-input"
-                id="category"
-                name="category"
-                required
+          <div class="modal-body">
+            <h3>Ajout photo</h3>
+            <div class="add-picture-area">
+              <form
+                class="form form-add-picture"
+                enctype="multipart/form-data"
+                method="post"
+                id="formElem"
               >
-                <option value=""></option>
-              </select>
+                <div class="import-picture-area">
+                  <div id="image-preview" class="image-preview">
+                    <output></output>
+                  </div>
+                  <div id="img-display-area" class="img-display-area">
+                    <i class="fa-regular fa-image fa-2xl"></i>
+                  </div>
 
-              <!-- <div class="error-message" id="error-picture">
-                  Erreur indéterminée
-                </div> -->
-              <hr />
-              <input
-                class="btn btn-disabled btn-typo"
-                type="submit"
-                id="btn-valid-add-picture"
-                value="Valider"
-              />
-            </form>
+                  <label>
+                    <input
+                      hidden
+                      type="file"
+                      accept="image/jpeg, image/png, image/jpg"
+                      id="image"
+                      name="image"
+                    />
+
+                    <span class="btn btn-clear btn-clear--wide btn-typo"
+                      >+ Ajouter photo</span
+                    >
+                  </label>
+
+                  <span>jpg, png : 4mo max</span>
+                </div>
+
+                <label for="titre"><b>Titre</b></label>
+                <input
+                  class="choose-pic"
+                  id="title"
+                  type="text"
+                  name="title"
+                  required
+                />
+
+                <label for="category"><b>Catégorie</b></label>
+                <select
+                  class="add-pic-input"
+                  id="category"
+                  name="category"
+                  required
+                >
+                  <option value=""></option>
+                </select>
+
+                <hr />
+                <input
+                  disabled
+                  class="btn-typo btn-disabled"
+                  type="submit"
+                  id="btn-valid-add-picture"
+                  value="Valider"
+                />
+              </form>
+            </div>
           </div>
         </div>
       </div>
@@ -185,7 +189,9 @@
         </div>
         <!-- ____________________BOUTONS DE TRI_____________________ -->
         <div id="tri">
-          <button class="sorting-all" type="button" id="btn-all">Tous</button>
+          <button class="sorting-all btn btn-typo" type="button" id="btn-all">
+            Tous
+          </button>
         </div>
         <div id="gallery-container"></div>
       </section>
