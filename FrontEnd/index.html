@@ -12,8 +12,7 @@
     />
 
     <meta name="description" content="" />
-    <!-- <link rel="stylesheet" href="./assets/style.css" /> -->
-    <link rel="stylesheet" href="./assets/style_add.css" />
+    <link rel="stylesheet" href="./assets/style.css" />
 
     <script type="text/javascript" src="js/loadWorks.js" defer></script>
     <script type="text/javascript" src="js/checkLogin.js" defer></script>
@@ -43,7 +42,7 @@
       </nav>
     </header>
     <main>
-      <!-- ____________________MODALE GALLERIE_____________________ -->
+      <!-- ____________________MODAL GALLERY_____________________ -->
       <div id="modal-gallery" class="modal">
         <!-- Contenu de la modale -->
         <div class="modal-content">
@@ -55,8 +54,12 @@
             <div id="gallery-edit" class="gallery gallery-small"></div>
             <hr />
 
-            <button class="btn btn-reverse btn-typo" type="button">
-              <a href="#" onclick="getModalPicture()">Ajouter une photo</a>
+            <button
+              class="btn btn-reverse btn-typo"
+              type="button"
+              id="open-second-modal"
+            >
+              Ajouter une photo
             </button>
             <p>Supprimer la galerie</p>
           </div>
@@ -65,17 +68,17 @@
 
       <!-- ____________________MODALE AJOUTER PHOTO_____________________ -->
       <div id="modal-add-picture" class="modal">
-        <!-- Contenu de la modale -->
+        <!-- Modal content -->
         <div class="modal-content modal-content-add-picture">
           <div class="nav-symbols">
-            <!-- Flèche pour retourner en arrière-->
+            <!-- Return arrow -->
             <span class="close-arrow"
               ><i class="fa-solid fa-arrow-left fa-xs"></i
             ></span>
-            <!-- Croix de fermeture -->
+            <!-- Closing cross -->
             <span class="close">&times;</span>
           </div>
-          <!-- Contenu -->
+          <!-- Content -->
           <div class="modal-body">
             <h3>Ajout photo</h3>
             <div class="add-picture-area">
@@ -100,14 +103,23 @@
                       accept="image/jpeg, image/png, image/jpg"
                       id="image"
                       name="image"
+                      max-size="4000000"
                     />
 
-                    <span class="btn btn-clear btn-clear--wide btn-typo"
+                    <span
+                      class="btn btn-clear btn-clear--wide btn-typo"
+                      id="add-picture-button"
                       >+ Ajouter photo</span
                     >
                   </label>
 
                   <span>jpg, png : 4mo max</span>
+                </div>
+                <div class="error-message" id="error-size">
+                  Fichier trop volumineux
+                </div>
+                <div class="error-message" id="error-format">
+                  Format non supporté
                 </div>
 
                 <label for="titre"><b>Titre</b></label>
@@ -150,8 +162,9 @@
           </figure>
           <figcaption>
             <div class="edition">
-              <i class="fa-regular fa-pen-to-square fa-lg"></i>
-              <span>modifier</span>
+              <button class="edition basic-typo">
+                <i class="fa-regular fa-pen-to-square fa-lg"></i> modifier
+              </button>
             </div>
           </figcaption>
         </div>
@@ -181,10 +194,12 @@
           <h2>Mes Projets</h2>
 
           <div class="edition" id="edition-gallery">
-            <a href="#" onclick="getModal()" class="edition">
-              <i class="fa-regular fa-pen-to-square fa-lg"></i>
+            <button class="edition basic-typo" id="open-first-modal">
+              <i class="fa-regular fa-pen-to-square fa-lg"></i> modifier
+            </button>
+            <!-- <a href="#" onclick="getModal()">
               <p>modifier</p>
-            </a>
+            </a> -->
           </div>
         </div>
         <!-- ____________________BOUTONS DE TRI_____________________ -->

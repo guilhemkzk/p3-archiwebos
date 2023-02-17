@@ -1,14 +1,27 @@
-// FUNCTION TO TEST IS THE EMAIL IS VALID
+//
+//
+//
+// REGEX - TEST IS THE EMAIL IS VALID
 function validateEmail(email) {
   var re =
     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(email);
 }
+//
+//
+//
 
 // sophie.bluel@test.tld
 // S0phie
 
-// FUNCTION TO CHECK ID AND PSW AND ALLOW CONNEXION
+//
+//
+//
+// CHECK ID AND PASSWORD TO ALLOW CONNEXION
+//
+//
+//
+
 async function loginUser() {
   // Clean the old error messages displayed if applicable
   let errMessage = document.getElementById("error");

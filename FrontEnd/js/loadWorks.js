@@ -1,6 +1,10 @@
 // ----------------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------------- //
-// ---------------------------- POPULATE THE GALLERY WITH WORKS ---------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ---------------------------- POPULATE  GALLERY WITH WORKS ------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------------- //
 
@@ -24,7 +28,7 @@ async function writeGallery(works) {
   );
 }
 
-// FUNCTION TO GET ALL THE WORKS USING API CALL
+// GET ALL WORKS USING API CALL
 async function getWorks(location) {
   //intiate variable
   let allWorks;
@@ -43,14 +47,31 @@ async function getWorks(location) {
 }
 
 getWorks(gallery);
-
+//
+//
+//
+//
+//
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------------- //
 // ------------------------------ CREATING THE SORTING BUTTONS ----------------------------- //
 // ----------------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------------- //
-
-// STEP 1 - GETTING CATEGORIES FROM API AND CREATING THE HTML BUTTONS
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+//
+//
+//
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// STEP 1 - CREATING THE HTML BUTTONS FROM CATEGORIES [API]
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+//
+//
+//
 
 // Get the id of the element containing the sorting buttons
 let filterDiv = document.getElementById("tri");
@@ -76,9 +97,17 @@ async function getCategories(location) {
     };
     // Send the content written in the HTML page
     location.innerHTML += returnCategories(allCategories);
-
+    //
+    //
+    //
+    // ----------------------------------------------------------------------------------------- //
+    // ----------------------------------------------------------------------------------------- //
     // STEP 2 - ADD AN EVENT LISTENER TO EACH SORTING BUTTON + THE ALL BUTTON
-
+    // ----------------------------------------------------------------------------------------- //
+    // ----------------------------------------------------------------------------------------- //
+    //
+    //
+    //
     // Get the elements where the buttons are created just before and sent to HTML
     let filterBtns = document.getElementsByClassName("sorting-btn");
     console.log(filterBtns.length);
@@ -97,12 +126,13 @@ async function getCategories(location) {
       });
     }
 
-    // STEP 0 - CREATING THE EVENT LISTENER FOR THE ALREADY EXISTING ALL BUTTON
+    // CREATING THE EVENT LISTENER FOR THE ALREADY EXISTING ALL BUTTON
     // Get the button from the html
     let allBtn = document.getElementById("btn-all");
 
     // Autofocus on the ALL button
-    document.getElementById("btn-all").focus();
+    allBtn.focus();
+    allBtn.style.outline = "none";
 
     //EVENT LISTENER FOR ALL BUTTON AND LOAD ALL WORKS
     allBtn.addEventListener("click", function () {
@@ -116,9 +146,19 @@ async function getCategories(location) {
 
 getCategories(filterDiv);
 
-// STEP 3 - ACTION : WHEN BUTTON IS CLICKED, FILTER THE GALLERY
+//
+//
+//
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// STEP 3 - FILTER THE GALLERY
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+//
+//
+//
 
-// FUNCTION TO FILTER THE WORKS REGARDING THEIR CATEGORY
+// FILTER THE WORKS REGARDING THEIR CATEGORY
 async function filterWorks(id) {
   //input parameter is "categoryId" from API
   //intiate variable
@@ -142,11 +182,23 @@ async function filterWorks(id) {
   }
 }
 
+//
+//
+//
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------------- //
 // --------------------------- OPENING THE FIRST EDITION MODAL ----------------------------- //
 // ----------------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+//
+//
+//
+
+// OPENING THE FIRST MODAL AND POPULATING IT
 
 async function getModal() {
   var modal = document.getElementById("modal-gallery");
@@ -199,7 +251,17 @@ async function getModal() {
   }
 }
 
+document
+  .getElementById("open-first-modal")
+  .addEventListener("click", function () {
+    getModal();
+  });
+
+//
+//
+//
 // CLOSE THE MODAL //
+//
 var modal = document.getElementById("modal-gallery");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
@@ -208,12 +270,25 @@ span.onclick = function () {
   modal.style.display = "none";
 };
 
+//
+//
+//
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------------- //
 // ------------------------- DELETING A WORK (FROM THE FIRST MODAL) ------------------------ //
 // ----------------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+//
+//
+//
 
+//
+//
+//
 // IF GUARDIAN
 function isConnected() {
   const userToken = localStorage.getItem("token");
@@ -225,6 +300,10 @@ function isConnected() {
   }
 }
 
+//
+//
+//
+// DELETE A WORK FROM ID [API]
 async function deleteWork(id) {
   // Get the token of the user
   let token = isConnected();
@@ -255,7 +334,7 @@ async function deleteWork(id) {
       );
     } else {
       // Create a variable to get the ID and TOKEN proving that the connexion is OK
-      window.alert("Element supprimé avec succès");
+      // window.alert("Element supprimé avec succès");
       location.href = "./index.html";
       // Loading the index page by calling loadWorks.js
     }
@@ -264,26 +343,48 @@ async function deleteWork(id) {
   }
 }
 
+//
+//
+//
 // ----------------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------------- //
-// ------------------------- OPENING SECOND MODAL (ADD PICTURE) ------------------------ //
 // ----------------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------------- //
+// ------------------------- OPENING SECOND MODAL (ADD PICTURE) ---------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+//
+//
+//
 
-let selectOption = document.getElementById("category");
+//
+//
+//
+// DISPLAY THE SECOND MODAL
 
-// FUNCTION CALLED TO DISPLAY THE SECOND MODAL
-async function getModalPicture() {
-  // Display the second modal
-  let modalAddPicture = document.getElementById("modal-add-picture");
-  modalAddPicture.style.display = "flex";
+document
+  .getElementById("open-second-modal")
+  .addEventListener("click", function () {
+    // Get element that contain the modal in HTML, and display it
+    let modalAddPicture = document.getElementById("modal-add-picture");
+    modalAddPicture.style.display = "flex";
 
-  // Close the first modal
-  document.getElementById("modal-gallery").style.display = "none";
-}
+    // Close the first modal
+    document.getElementById("modal-gallery").style.display = "none";
+  });
 
-// GETTING THE CATEGORIES TO DISPLAY THE DROPDOWN LIST
-// FUNCTION TO GET THE CATEGORIES FROM API
+//
+//
+//
+//
+//
+//
+//
+// GET THE CATEGORIES TO DISPLAY THE DROPDOWN LIST
+
+// GET THE CATEGORIES FROM API
 async function getListCategories(location) {
   // initiate variable
   let allCategories;
@@ -310,10 +411,20 @@ async function getListCategories(location) {
   }
 }
 
+//Get the html element that containt the selection of category
+let selectOption = document.getElementById("category");
+
 getListCategories(selectOption);
 
-// CLOSE THE SECOND MODAL (PICTURE) //
+//
+//
+//
+// CLOSE THE SECOND MODAL
+//
+//
+//
 
+// Get the HTML <div> that display the picture
 let modalAddPicture = document.getElementById("modal-add-picture");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[1];
@@ -322,7 +433,9 @@ span.onclick = function () {
   modalAddPicture.style.display = "none";
 };
 
+////////////////////////////////////////////////////////////////////////////////
 ////////////////// THIS IS FOR THE TWO MODALS //////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 // When the user clicks anywhere outside of the modals, close it
 window.onclick = function (event) {
   if (event.target == modal || event.target == modalAddPicture) {
@@ -330,9 +443,15 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
-///////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 
-// RETURN ARROW OF THE SECOND MODAL TO RETURN TO THE FIRST ONE
+//
+//
+//
+// RETURN ARROW OF THE SECOND MODAL > RETURN TO THE FIRST ONE
+// Get the return arrow in HTML
 var returnArrow = document.getElementsByClassName("close-arrow")[0];
 // When the user clicks on arrow, close the second modal and re-open the first one
 returnArrow.onclick = function () {
@@ -340,7 +459,29 @@ returnArrow.onclick = function () {
   modalAddPicture.style.display = "none";
 };
 
-// ----------- UPLOAD PICTURE FROM THE SECOND MODAL ------------------//
+//
+//
+//
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// -------------------------------------- UPLOAD PICTURE ----------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+//
+//
+//
+
+//
+//
+//
+// ---------------------------- STEP 0 - INITIATE VARIABLES ----------------------------------//
+//
+//
+//
 
 // Get the html elements for input image
 let input = document.querySelector("input");
@@ -349,51 +490,144 @@ let output = document.querySelector("output");
 // Create an empty array to contain the image
 let imagesArray = [];
 
+//
+//
+//
+// ------------------------------- STEP 1 - APPEARANCE CHANGES ------------------------------//
+//
+//
+//
+
+async function invalidImageChanges() {
+  // Get the div where the image symbol is displayed
+  let photoDisplayArea = document.getElementById("img-display-area");
+  // Get the div where the image itself is displayed
+  let imagePreview = document.getElementById("image-preview");
+  // Get the html btn that valid the form
+  let validateBtnSendPicture = document.getElementById("btn-valid-add-picture");
+
+  //Clean the display and remove a previous image
+  photoDisplayArea.style.display = "flex";
+  imagePreview.style.display = "none";
+
+  // Put the disabled option and change the appearance
+  validateBtnSendPicture.disabled = true;
+  // Remove disable parameter on the "valider" btn
+  validateBtnSendPicture.className = "btn-typo btn-disabled";
+}
+
 // Put an event Listener on the input file; if it changes
 input.addEventListener("change", function () {
-  // Get the file chosen by the user
+  //
+  //
+  // Clean the old error messages displayed if applicable
+  let errMessageSize = document.getElementById("error-size");
+  errMessageSize.style.display = "none";
+  let errMessageFormat = document.getElementById("error-format");
+  errMessageFormat.style.display = "none";
+
+  // Set the Button text to + Ajouter photo if it has been changed before
+  // Get the button used to add the picture (+ Ajouter photo)
+  let addPictureButton = document.getElementById("add-picture-button");
+  // Change the text to : Modifier ; when a picture is displayed
+  addPictureButton.textContent = "+ Ajouter photo";
+  //
+  //
+  // Get the file uploaded by the user
   const file = input.files;
+  // Allowing file type
+  let _validFileExtensions = ["jpg", "jpeg", "png"];
+
+  // Get the extension of the file
+  let fileExtension = file[0].name.split(".").pop().toLowerCase();
+  // Check if the file match the prerequies
+  // In size and in format
+  if (file[0].size > 4000000) {
+    invalidImageChanges();
+    // Display error message
+    errMessageSize.style.display = "block";
+    return false;
+  }
+
+  // Initiate token for format validation
+  let validExtension = false;
+
+  // For all extensions listed in the variable, check for matches
+  for (var j = 0; j < _validFileExtensions.length; j++) {
+    if (fileExtension == _validFileExtensions[j]) {
+      // If the extension of the file match one of the list, set token to 'true'
+      validExtension = true;
+      break;
+    }
+  }
+
+  // If token is not true, display message and clean data
+  if (validExtension != true) {
+    invalidImageChanges();
+    errMessageFormat.style.display = "block";
+    return false;
+  }
+
   // Add the file into the array
-  imagesArray.push(file[0]);
+  imagesArray[0] = file[0];
   // Function to display the image
-  uploadPicture();
+  displayPicture();
+
+  // Get the html btn that valid the form
+  let validateBtnSendPicture = document.getElementById("btn-valid-add-picture");
+  // Remove the disabled option and change the appearance
+  validateBtnSendPicture.disabled = false;
+  // Remove disable parameter on the "valider" btn
+  validateBtnSendPicture.className =
+    "btn-typo btn-disabled btn-disabled-activated";
 });
 
-function uploadPicture() {
+//
+//
+//
+// ------------------------------- STEP 2 - FUNCTION DISPLAY PICTURE ------------------------------//
+//
+//
+//
+
+function displayPicture() {
   let images = "";
-  // For each image on the index of the arraw, create a div that will
+  // For each image create a div that will
   // allow to display the image in the page
-  imagesArray.forEach((image, index) => {
+  imagesArray.forEach((image) => {
     images += `<div class="image">
                 <img src="${URL.createObjectURL(image)}" alt="image">
               </div>`;
   });
   // Push the HTML code into the output div and erase previous code
   output.innerHTML = images;
+
+  // Get HTML element containing the logo when there is no picture
   let photoDisplayArea = document.getElementById("img-display-area");
+  // Get HTML element containing image preview
   let imagePreview = document.getElementById("image-preview");
+  // Remove the logo
   photoDisplayArea.style.display = "none";
+  // Display the image
   imagePreview.style.display = "flex";
+
+  // Get the button used to add the picture (+ Ajouter photo)
+  let addPictureButton = document.getElementById("add-picture-button");
+  // Change the text to : Modifier ; when a picture is displayed
+  addPictureButton.textContent = "Modifier";
 }
 
-// ---------------------------------------------------------------//
-// ----------------- SEND PICTURE IN THE SERVER ------------------//
-// ---------------------------------------------------------------//
-let imagePreview = document.getElementById("image-preview");
-// Remove disabled the button that validate the form
-let validateBtnSendPicture = document.getElementById("btn-valid-add-picture");
-// If the image is completed
+//
+//
+//
+// ------------------------------- STEP 3 - SEND PICTURE TO SERVER ------------------------------//
+//
+//
+//
 
-// IL FAUT UN DETECTEUR DE CHANGEMENT QUAND UNE IMAGE EST UPLOAD
-// SINON CA NE VERIFIE QU'AU DEBUT
-if (imagePreview.style.display === "flex") {
-  //remove disable parameter
-  validateBtnSendPicture.disabled = false;
-  //Change the appaerance of the btn from disable to normal
-  validateBtnSendPicture.className = "btn btn-typo btn-reverse";
-}
-
+// On submit of the form
 formElem.onsubmit = async (e) => {
+  // Prevent page from reloading
   e.preventDefault();
 
   // IF GUARDIAN
@@ -404,6 +638,7 @@ formElem.onsubmit = async (e) => {
     return false;
   }
 
+  // Get html element containing the form
   let formElem = document.getElementById("formElem");
 
   try {
@@ -414,7 +649,7 @@ formElem.onsubmit = async (e) => {
         Accept: "application/json",
         Authorization: "Bearer " + token,
       },
-      // Convert the JS value into json string to write the body
+      // Convert the JS value into FormData to write the body
       body: new FormData(formElem),
     });
 
@@ -422,67 +657,13 @@ formElem.onsubmit = async (e) => {
     // IF THERE IS AN ERROR CODE, DISPLAY ERROR MESSAGE
     if (res.status === 401 || res.status === 404) {
       console.log("erreur 401 ou 404");
-      // errMessage.style.display = "block";
       // Changing the style of the div containing the error message to block to display it
+      // errMessage.style.display = "block";
     } else if (res.status === 201) {
-      // Create a variable to get the ID and TOKEN proving that the connexion is OK
-      let response = await res.json();
-      console.log(response);
-      // Loading the index page by calling loadWorks.js
-      // location.href = "./index.html";
+      //Return to the index page
+      location.href = "./index.html";
     }
   } catch (err) {
     console.log(err);
   }
 };
-
-// async function sendPicture() {
-//   // Get the elements input by the user
-
-//   let formElem = document.getElementById("form-elem");
-//   let newPictureForm = new FormData();
-//   newPictureForm.append("image", document.getElementById("image").value);
-//   newPictureForm.append("title", document.getElementById("title").value);
-//   newPictureForm.append(
-//     "category",
-//     parseInt(document.getElementById("category").value)
-//   );
-
-//   // IF GUARDIAN
-//   let token = isConnected();
-
-//   if (!token) {
-//     console.log("Utilisateur non connecté");
-//     return false;
-//   }
-
-//   try {
-//     // API Call : POST to send the image and data in the server
-//     const res = await fetch("http://localhost:5678/api/works", {
-//       method: "POST",
-//       headers: {
-//         Accept: "application/json",
-//         Authorization: "Bearer " + token,
-//       },
-//       // Convert the JS value into json string to write the body
-//       body: newPictureForm,
-//     });
-
-//     // Considering possible error messages and displaying error message if applicable
-//     // IF THERE IS AN ERROR CODE, DISPLAY ERROR MESSAGE
-//     if (res.status === 401 || res.status === 404) {
-//       console.log("erreur 401 ou 404");
-//       // errMessage.style.display = "block";
-//       // Changing the style of the div containing the error message to block to display it
-//     } else if (res.status === 201) {
-//       // Create a variable to get the ID and TOKEN proving that the connexion is OK
-//       let response = await res.json();
-//       console.log(response);
-//       // Loading the index page by calling loadWorks.js
-//       location.href = "./index.html";
-//     }
-//   } catch (err) {
-//     console.log(err);
-//   }
-//   // ELSE, IF THE USER EMAIL IS INVALID :
-// }
