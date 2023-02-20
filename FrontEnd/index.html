@@ -16,10 +16,11 @@
 
     <script type="text/javascript" src="js/loadWorks.js" defer></script>
     <script type="text/javascript" src="js/checkLogin.js" defer></script>
+    <script type="text/javascript" src="js/logout.js" defer></script>
   </head>
 
   <body>
-    <!-- ____________________BANDEAU EDITION_____________________ -->
+    <!-- ____________________EDITION BANNER_____________________ -->
     <div class="edition-banner" id="edition-banner">
       <i class="fa-regular fa-pen-to-square fa-lg"></i>
       <p>mode édition</p>
@@ -27,7 +28,7 @@
       <div class="btn-edition btn typo">publier les changements</div>
     </div>
     <header>
-      <!-- ____________________EN TETE_____________________ -->
+      <!-- ____________________HEADER_____________________ -->
       <a href="./index.html">
         <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1></a
       >
@@ -36,7 +37,10 @@
           <li>projets</li>
           <li>contact</li>
           <a href="./login.html" id="login"><li>login</li></a>
-          <a href="javascript:logout();" id="logout"><li>logout</li></a>
+          <button class="basic-typo hidden-button" id="logout">
+            <li>logout</li>
+          </button>
+
           <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
         </ul>
       </nav>
@@ -44,11 +48,11 @@
     <main>
       <!-- ____________________MODAL GALLERY_____________________ -->
       <div id="modal-gallery" class="modal">
-        <!-- Contenu de la modale -->
+        <!-- Modal content -->
         <div class="modal-content">
-          <!-- Croix de fermeture -->
+          <!-- Closing cross -->
           <span class="close">&times;</span>
-          <!-- Contenu -->
+          <!-- Content -->
           <div class="modal-body">
             <h3>Galerie photo</h3>
             <div id="gallery-edit" class="gallery gallery-small"></div>
@@ -162,7 +166,7 @@
           </figure>
           <figcaption>
             <div class="edition">
-              <button class="edition basic-typo">
+              <button class="edition basic-typo hidden-button">
                 <i class="fa-regular fa-pen-to-square fa-lg"></i> modifier
               </button>
             </div>
@@ -188,21 +192,23 @@
           </p>
         </article>
       </section>
-      <!-- ____________________PORTFOLIO / GALLERIE_____________________ -->
+      <!-- ____________________PORTFOLIO / GALLERY_____________________ -->
       <section id="portfolio">
         <div class="titre-portfolio">
-          <h2>Mes Projets</h2>
+          <div class="portfolio-header">
+            <h2>Mes Projets</h2>
 
-          <div class="edition" id="edition-gallery">
-            <button class="edition basic-typo" id="open-first-modal">
-              <i class="fa-regular fa-pen-to-square fa-lg"></i> modifier
-            </button>
-            <!-- <a href="#" onclick="getModal()">
-              <p>modifier</p>
-            </a> -->
+            <div class="edition" id="edition-gallery">
+              <button
+                class="edition basic-typo hidden-button"
+                id="open-first-modal"
+              >
+                <i class="fa-regular fa-pen-to-square fa-lg"></i> modifier
+              </button>
+            </div>
           </div>
         </div>
-        <!-- ____________________BOUTONS DE TRI_____________________ -->
+        <!-- ____________________SORTING BUTTONS_____________________ -->
         <div id="tri">
           <button class="sorting-all btn btn-typo" type="button" id="btn-all">
             Tous
@@ -210,7 +216,7 @@
         </div>
         <div id="gallery-container"></div>
       </section>
-      <!-- ____________________FORMULAIRE CONTACT_____________________ -->
+      <!-- ____________________ CONTACT FORM_____________________ -->
       <section id="contact">
         <h2>Contact</h2>
         <p>Vous avez un projet ? Discutons-en !</p>

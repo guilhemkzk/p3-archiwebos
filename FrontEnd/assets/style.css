@@ -245,18 +245,21 @@ hr {
 }
 
 .btn {
-  padding: 0.5rem 0.5rem;
+  padding: 0.5rem 1rem;
   border: 1px solid #1d6154;
   border-radius: 60px;
   margin: 3rem 0.5rem;
   width: fit-content;
   color: #1d6154;
-  background-color: #fff;
+  background-color: #fffef8;
 }
 .btn-reverse {
   border: 1px solid #fff;
   color: #fff;
   background-color: #1d6154;
+}
+.btn-reverse:hover {
+  border: 1px solid #1d6154;
 }
 .btn-reverse a {
   color: #fff;
@@ -281,13 +284,13 @@ hr {
   padding: 0.5rem 2rem;
 }
 .btn-clear:hover {
-  border: 1px solid #306685;
+  border: 1px solid #e8f1f7;
 }
 
 .btn-edition {
   margin: auto 1rem;
   padding: 0.8rem 2rem;
-  background: #ffffff;
+  background: #fff;
   border-radius: 60px;
   color: black;
   text-align: center;
@@ -304,6 +307,15 @@ hr {
 }
 .btn-disabled-activated {
   background-color: #1d6154;
+}
+
+.hidden-button {
+  padding: 0;
+  border: none;
+  background: none;
+}
+.hidden-button:hover {
+  color: #b1663c;
 }
 
 .form {
@@ -411,7 +423,7 @@ hr {
   font-size: 26px;
   text-align: center;
   line-height: 30.5px;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 .modal-content button {
   padding: 0.5rem 2rem;
@@ -521,10 +533,17 @@ hr {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-bottom: 3em;
 }
 #portfolio .edition {
   margin-left: 2rem;
+}
+
+.portfolio-header {
+  margin: 3rem 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 #tri {
@@ -553,12 +572,6 @@ hr {
   border-radius: 60px;
 }
 
-.edition button {
-  padding: 0;
-  border: none;
-  background: none;
-}
-
 #connexion {
   margin: auto;
   display: flex;
@@ -577,6 +590,10 @@ hr {
 
 section {
   flex: 1;
+}
+
+.li-focus {
+  font-weight: 800;
 }
 
 /* ------------------------------MODALE AJOUTER PHOTO -------------------------- */
@@ -674,17 +691,20 @@ footer nav ul {
   min-height: 4rem;
   width: 100%;
   background-color: black;
-  color: white;
-  margin: auto 1rem;
+  color: #fff;
+  margin: auto;
 }
 
 .edition {
   flex-direction: row;
   align-items: baseline;
 }
+.edition i {
+  margin-right: 0.5rem;
+}
 
 .edition-banner i {
-  margin-right: 0.4rem;
+  margin-right: 0.5rem;
 }
 
 #logout {

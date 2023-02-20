@@ -110,14 +110,12 @@ async function getCategories(location) {
     //
     // Get the elements where the buttons are created just before and sent to HTML
     let filterBtns = document.getElementsByClassName("sorting-btn");
-    console.log(filterBtns.length);
 
     //EVENTS LISTENERS FOR CATEGORIES BUTTONS AND LOAD WORKS BY CATEGORIES
     for (let i = 0; i < filterBtns.length; i++) {
       //Get the category id from the id
       let btnCategoryId = filterBtns[i].id.charAt(filterBtns[i].id.length - 1);
       //For each categorie
-      console.log(btnCategoryId);
       filterBtns.item(btnCategoryId - 1).addEventListener("click", function () {
         //Create an event listener for each button
         filterWorks(btnCategoryId);
@@ -198,7 +196,17 @@ async function filterWorks(id) {
 //
 //
 
+//
+//
+//
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
 // OPENING THE FIRST MODAL AND POPULATING IT
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+//
+//
+//
 
 async function getModal() {
   var modal = document.getElementById("modal-gallery");
@@ -259,9 +267,15 @@ document
 
 //
 //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// CLOSE THE MODAL
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
 //
-// CLOSE THE MODAL //
 //
+//
+
 var modal = document.getElementById("modal-gallery");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
@@ -302,8 +316,14 @@ function isConnected() {
 
 //
 //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// DELETE A WORK (API CALL)
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
 //
-// DELETE A WORK FROM ID [API]
+//
+//
 async function deleteWork(id) {
   // Get the token of the user
   let token = isConnected();
@@ -361,8 +381,14 @@ async function deleteWork(id) {
 
 //
 //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// DISPLAY SECOND MODAL
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
 //
-// DISPLAY THE SECOND MODAL
+//
+//
 
 document
   .getElementById("open-second-modal")
@@ -378,11 +404,10 @@ document
 //
 //
 //
-//
-//
-//
-//
 // GET THE CATEGORIES TO DISPLAY THE DROPDOWN LIST
+//
+//
+//
 
 // GET THE CATEGORIES FROM API
 async function getListCategories(location) {
@@ -418,8 +443,11 @@ getListCategories(selectOption);
 
 //
 //
-//
-// CLOSE THE SECOND MODAL
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// CLOSE SECOND MODAL
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
 //
 //
 //
@@ -451,6 +479,10 @@ window.onclick = function (event) {
 //
 //
 // RETURN ARROW OF THE SECOND MODAL > RETURN TO THE FIRST ONE
+//
+//
+//
+
 // Get the return arrow in HTML
 var returnArrow = document.getElementsByClassName("close-arrow")[0];
 // When the user clicks on arrow, close the second modal and re-open the first one
@@ -498,6 +530,7 @@ let imagesArray = [];
 //
 //
 
+// Summarize all the displays to change if no image is entered or if the image is invalid
 async function invalidImageChanges() {
   // Get the div where the image symbol is displayed
   let photoDisplayArea = document.getElementById("img-display-area");
@@ -516,23 +549,22 @@ async function invalidImageChanges() {
   validateBtnSendPicture.className = "btn-typo btn-disabled";
 }
 
-// Put an event Listener on the input file; if it changes
+//
+//
+//
+// Event Listener on the input file >>>> if it changes
 input.addEventListener("change", function () {
-  //
-  //
   // Clean the old error messages displayed if applicable
   let errMessageSize = document.getElementById("error-size");
   errMessageSize.style.display = "none";
   let errMessageFormat = document.getElementById("error-format");
   errMessageFormat.style.display = "none";
 
-  // Set the Button text to + Ajouter photo if it has been changed before
   // Get the button used to add the picture (+ Ajouter photo)
   let addPictureButton = document.getElementById("add-picture-button");
   // Change the text to : Modifier ; when a picture is displayed
   addPictureButton.textContent = "+ Ajouter photo";
-  //
-  //
+
   // Get the file uploaded by the user
   const file = input.files;
   // Allowing file type
@@ -590,7 +622,9 @@ input.addEventListener("change", function () {
 //
 //
 
+// Display a preview of the image uploaded by the user
 function displayPicture() {
+  // Initiate
   let images = "";
   // For each image create a div that will
   // allow to display the image in the page

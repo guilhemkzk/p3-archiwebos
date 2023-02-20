@@ -15,18 +15,22 @@
 
 // Basic btn with white background and outline primary color
 .btn {
-  padding: 0.5rem 0.5rem;
+  padding: 0.5rem 1rem;
   border: 1px solid $colour-primary;
   border-radius: 60px;
   margin: 3rem 0.5rem;
   width: fit-content;
   color: $colour-primary;
-  background-color: $colour-white;
+  background-color: $colour-secondary;
 
   &-reverse {
     border: 1px solid $colour-white;
     color: $colour-white;
     background-color: $colour-primary;
+
+    &:hover {
+      border: 1px solid $colour-primary;
+    }
 
     & a {
       color: $colour-white;
@@ -55,7 +59,7 @@
       padding: 0.5rem 2rem;
     }
     &:hover {
-      border: 1px solid $colour-modal-blue;
+      border: 1px solid $colour-modal-grey-light;
     }
   }
 }
@@ -64,7 +68,7 @@
 .btn-edition {
   margin: auto 1rem;
   padding: 0.8rem 2rem;
-  background: #ffffff;
+  background: $colour-white;
   border-radius: 60px;
   color: black;
   text-align: center;
@@ -81,5 +85,15 @@
 
   &-activated {
     background-color: $colour-primary;
+  }
+}
+
+.hidden-button {
+  padding: 0;
+  border: none;
+  background: none;
+
+  &:hover {
+    color: #b1663c;
   }
 }
