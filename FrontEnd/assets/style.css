@@ -211,9 +211,10 @@ hr {
 }
 
 .error-message {
+  display: flex;
+  justify-content: center;
   color: #db464b;
   font-weight: 700;
-  display: none;
 }
 
 .link-help {
@@ -337,6 +338,7 @@ hr {
 }
 .form label {
   margin: 2em 0 1em 0;
+  font-weight: 500;
 }
 .form-login {
   justify-content: center;
@@ -422,7 +424,7 @@ hr {
   color: #d65353;
 }
 .modal-content h3 {
-  font-weight: 600;
+  font-weight: 400;
   font-size: 26px;
   text-align: center;
   line-height: 30.5px;
@@ -616,6 +618,7 @@ section {
   width: 100%;
   height: fit-content;
   margin-bottom: 3rem;
+  padding-top: 1.5rem;
 }
 
 .img-display-area {

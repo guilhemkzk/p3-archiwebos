@@ -222,7 +222,8 @@ hr {
 }
 
 .error-message {
+  display: flex;
+  justify-content: center;
   color: $colour-invalid;
   font-weight: 700;
-  display: none;
 }

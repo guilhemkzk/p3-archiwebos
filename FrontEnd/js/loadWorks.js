@@ -475,10 +475,14 @@ async function invalidImageChanges() {
 // Event Listener on the input file >>>> if it changes
 input.addEventListener("change", function () {
   // Clean the old error messages displayed if applicable
-  let errMessageSize = document.getElementById("error-size");
-  errMessageSize.style.display = "none";
-  let errMessageFormat = document.getElementById("error-format");
-  errMessageFormat.style.display = "none";
+  let errMessage = document.getElementById("error-size-format");
+  console.log(errMessage);
+  errMessage.innerHTML = "";
+
+  // let errMessageSize = document.getElementById("error-size");
+  // errMessageSize.style.display = "none";
+  // let errMessageFormat = document.getElementById("error-format");
+  // errMessageFormat.style.display = "none";
 
   // Get the button used to add the picture (+ Ajouter photo)
   let addPictureButton = document.getElementById("add-picture-button");
@@ -492,7 +496,8 @@ input.addEventListener("change", function () {
   if (file[0].size > 4000000) {
     invalidImageChanges();
     // Display error message
-    errMessageSize.style.display = "block";
+    errMessage.innerHTML = "Fichier trop volumineux";
+    // errMessageSize.style.display = "block";
     return false;
   }
 
@@ -501,24 +506,12 @@ input.addEventListener("change", function () {
 
   // Get the extension of the file
   let fileExtension = file[0].name.split(".")[1].toLowerCase();
+
   // Check if the file match the prerequies
-
-  // Initiate token for format validation
-  let validExtension = false;
-
-  // For all extensions listed in the variable, check for matches
-  for (let j = 0; j < validFileExtensions.length; j++) {
-    if (fileExtension == validFileExtensions[j]) {
-      // If the extension of the file match one of the list, set token to 'true'
-      validExtension = true;
-      break;
-    }
-  }
-
-  // If token is not true, display message and clean data
-  if (validExtension != true) {
+  if (validFileExtensions.includes(fileExtension) != true) {
     invalidImageChanges();
-    errMessageFormat.style.display = "block";
+    errMessage.innerHTML = "Format non supporté";
+    // errMessageFormat.style.display = "block";
     return false;
   }
 
