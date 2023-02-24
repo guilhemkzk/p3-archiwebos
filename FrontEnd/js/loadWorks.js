@@ -437,7 +437,7 @@ returnArrow.onclick = function () {
 // ----------------------------------------------------------------------------------------- //
 
 //
-// ---------------------------- STEP 0 - INITIATE VARIABLES ----------------------------------//
+// --------------------------------- INITIATE VARIABLES -------------------------------------//
 //
 
 // Get the html elements for input image
@@ -448,7 +448,7 @@ let output = document.querySelector("output");
 let imagesArray = [];
 
 //
-// ------------------------------- STEP 1 - APPEARANCE CHANGES ------------------------------//
+// ------------------------------------ APPEARANCE CHANGES ---------------------------------//
 //
 
 // Summarize all the displays to change if no image is entered or if the image is invalid
@@ -471,36 +471,24 @@ async function invalidImageChanges() {
 }
 
 //
+// ---------------------------------- ERROR MANAGEMENT ---------------------------------//
 //
-// Event Listener on the input file >>>> if it changes
-input.addEventListener("change", function () {
+
+// Synthetize all the error management processes
+function errorManagement(file) {
   // Clean the old error messages displayed if applicable
   let errMessage = document.getElementById("error-size-format");
-  console.log(errMessage);
   errMessage.innerHTML = "";
 
-  // let errMessageSize = document.getElementById("error-size");
-  // errMessageSize.style.display = "none";
-  // let errMessageFormat = document.getElementById("error-format");
-  // errMessageFormat.style.display = "none";
-
-  // Get the button used to add the picture (+ Ajouter photo)
-  let addPictureButton = document.getElementById("add-picture-button");
-  // Change the text to : Modifier ; when a picture is displayed
-  addPictureButton.textContent = "+ Ajouter photo";
-
-  // Get the file uploaded by the user
-  const file = input.files;
-
-  // In size and in format
+  // Check if the size of the file is under 4Mo
   if (file[0].size > 4000000) {
     invalidImageChanges();
     // Display error message
     errMessage.innerHTML = "Fichier trop volumineux";
-    // errMessageSize.style.display = "block";
     return false;
   }
 
+  // Check if the extension of the file is authorized
   // Allowing file type
   let validFileExtensions = ["jpg", "jpeg", "png"];
 
@@ -511,7 +499,26 @@ input.addEventListener("change", function () {
   if (validFileExtensions.includes(fileExtension) != true) {
     invalidImageChanges();
     errMessage.innerHTML = "Format non supporté";
-    // errMessageFormat.style.display = "block";
+    return false;
+  }
+}
+
+//
+// ------------------------------ EVENT LISTENER ON INPUT IMAGE -------------------------------//
+//
+
+// Event Listener on the input file >>>> if it changes
+input.addEventListener("change", function () {
+  // Get the button used to add the picture (+ Ajouter photo)
+  let addPictureButton = document.getElementById("add-picture-button");
+  // Change the text to : Modifier ; when a picture is displayed
+  addPictureButton.textContent = "+ Ajouter photo";
+
+  // Get the file uploaded by the user
+  const file = input.files;
+
+  // Call the function for error management, if the result is false, there is an error in size or format
+  if (errorManagement(file) == false) {
     return false;
   }
 
@@ -530,7 +537,7 @@ input.addEventListener("change", function () {
 });
 
 //
-// ------------------------------- STEP 2 - FUNCTION DISPLAY PICTURE ------------------------------//
+// ------------------------------------ DISPLAY PICTURE -----------------------------------//
 //
 
 // Display a preview of the image uploaded by the user
@@ -563,7 +570,7 @@ function displayPicture() {
 }
 
 //
-// ------------------------------- STEP 3 - SEND PICTURE TO SERVER ------------------------------//
+// --------------------------------- SEND PICTURE TO SERVER --------------------------------//
 //
 
 // On submit of the form
