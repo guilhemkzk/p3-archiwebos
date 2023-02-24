@@ -205,6 +205,12 @@ nav li {
   padding: 0 10px;
   font-size: 1.2em;
 
+  & a {
+    &:hover {
+      color: #b1663c;
+    }
+  }
+
   &:hover {
     color: #b1663c;
   }

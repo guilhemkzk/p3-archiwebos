@@ -198,6 +198,9 @@ nav li {
   padding: 0 10px;
   font-size: 1.2em;
 }
+nav li a:hover {
+  color: #b1663c;
+}
 nav li:hover {
   color: #b1663c;
 }
@@ -592,8 +595,12 @@ section {
   flex: 1;
 }
 
-.li-focus {
+#login-focus {
   font-weight: 800;
+}
+
+#logout {
+  font-size: inherit;
 }
 
 /* ------------------------------MODALE AJOUTER PHOTO -------------------------- */
@@ -705,10 +712,6 @@ footer nav ul {
 
 .edition-banner i {
   margin-right: 0.5rem;
-}
-
-#logout {
-  display: none; /* switch to block to display in edition mode */
 }
 
 /*# sourceMappingURL=style.css.map */

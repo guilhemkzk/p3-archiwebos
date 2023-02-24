@@ -36,10 +36,7 @@
         <ul>
           <li>projets</li>
           <li>contact</li>
-          <a href="./login.html" id="login"><li>login</li></a>
-          <button class="basic-typo hidden-button" id="logout">
-            <li>logout</li>
-          </button>
+          <li id="login-logout-switch"></li>
 
           <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
         </ul>
@@ -107,7 +104,6 @@
                       accept="image/jpeg, image/png, image/jpg"
                       id="image"
                       name="image"
-                      max-size="4000000"
                     />
 
                     <span
@@ -126,7 +122,7 @@
                   Format non supporté
                 </div>
 
-                <label for="titre"><b>Titre</b></label>
+                <label for="title">Titre</label>
                 <input
                   class="choose-pic"
                   id="title"
@@ -135,7 +131,7 @@
                   required
                 />
 
-                <label for="category"><b>Catégorie</b></label>
+                <label for="category">Catégorie</label>
                 <select
                   class="add-pic-input"
                   id="category"
@@ -163,14 +159,15 @@
         <div class="photo-profil">
           <figure>
             <img src="./assets/images/sophie-bluel.png" alt="" />
+
+            <figcaption>
+              <div class="edition">
+                <button class="edition basic-typo hidden-button">
+                  <i class="fa-regular fa-pen-to-square fa-lg"></i> modifier
+                </button>
+              </div>
+            </figcaption>
           </figure>
-          <figcaption>
-            <div class="edition">
-              <button class="edition basic-typo hidden-button">
-                <i class="fa-regular fa-pen-to-square fa-lg"></i> modifier
-              </button>
-            </div>
-          </figcaption>
         </div>
 
         <article>
@@ -241,7 +238,6 @@
     </footer>
 
     <script
-      <script
       src="https://kit.fontawesome.com/880e844b52.js"
       crossorigin="anonymous"
     ></script>
