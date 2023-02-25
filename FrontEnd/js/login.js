@@ -21,7 +21,7 @@ formConnect.onsubmit = async (e) => {
   e.preventDefault();
   // Clean the old error messages displayed if applicable
   let errMessage = document.getElementById("error");
-  errMessage.style.display = "none";
+  errMessage.innerHTML = "";
   //Checking if the user email input is valid using REGEX
   // IF THE USER EMAIL IS VALID
   if (validateEmail(document.getElementById("email").value)) {
@@ -46,7 +46,7 @@ formConnect.onsubmit = async (e) => {
       // Considering possible error messages and displaying error message if applicable
       // IF THERE IS AN ERROR CODE, DISPLAY ERROR MESSAGE
       if (res.status === 401 || res.status === 404) {
-        errMessage.style.display = "block";
+        errMessage.innerHTML = "Erreur dans l’identifiant ou le mot de passe";
         // Changing the style of the div containing the error message to block to display it
         // IF THERE IS NO ERROR CODE, ALLOW CONNEXION
       } else if (res.status === 200) {
