@@ -65,6 +65,6 @@ formConnect.onsubmit = async (e) => {
     // ELSE, IF THE USER EMAIL IS INVALID :
   } else {
     // Display error message
-    errMessage.style.display = "block";
+    errMessage.innerHTML = "Erreur dans l’identifiant ou le mot de passe";
   }
 };
