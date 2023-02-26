@@ -1,6 +1,6 @@
 // ----------------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------------- //
-// #region --------------------------POPULATE  GALLERY WITH WORKS -------------------------- //
+// #region --------------------------POPULATE GALLERY WITH WORKS -------------------------- //
 // ----------------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------------- //
 
@@ -304,10 +304,11 @@ async function deleteWork(id) {
         "Une erreur est survenue, veuillez réessayer ultérieurement"
       );
     } else {
-      // Create a variable to get the ID and TOKEN proving that the connexion is OK
-      // window.alert("Element supprimé avec succès");
-      location.href = "./index.html";
-      // Loading the index page by calling loadWorks.js
+      //Load the gallery again
+      getWorks(gallery);
+      // Remove the display of the modal
+      var modal = document.getElementById("modal-gallery");
+      modal.style.display = "none";
     }
   } catch (err) {
     console.log(err);
@@ -606,10 +607,11 @@ formElem.onsubmit = async (e) => {
     if (res.status === 401 || res.status === 404) {
       console.log("erreur 401 ou 404");
       // Changing the style of the div containing the error message to block to display it
-      // errMessage.style.display = "block";
     } else if (res.status === 201) {
-      //Return to the index page
-      location.href = "./index.html";
+      //Load the gallery again
+      getWorks(gallery);
+      // Close the modal
+      modalAddPicture.style.display = "none";
     }
   } catch (err) {
     console.log(err);
