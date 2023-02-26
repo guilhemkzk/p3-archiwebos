@@ -177,14 +177,11 @@ async function filterWorks(id) {
 //
 //
 
-async function getModal() {
-  var modal = document.getElementById("modal-gallery");
-  modal.style.display = "flex";
+// Get the container of the gallery
+let editGallery = document.getElementById("gallery-edit");
 
+async function getModal(location) {
   // CREATING GALLERY IN THE MODAL
-
-  // Get the container of the gallery
-  let editGallery = document.getElementById("gallery-edit");
 
   let allWorks;
   try {
@@ -222,7 +219,7 @@ async function getModal() {
       );
     };
     // Send the content written in the HTML page (errasing what was written previously)
-    editGallery.innerHTML = returnWorks(allWorks);
+    location.innerHTML = returnWorks(allWorks);
   } catch (err) {
     console.log(err);
   }
@@ -231,7 +228,10 @@ async function getModal() {
 document
   .getElementById("open-first-modal")
   .addEventListener("click", function () {
-    getModal();
+    var modal = document.getElementById("modal-gallery");
+    modal.style.display = "flex";
+
+    getModal(editGallery);
   });
 
 //
@@ -304,11 +304,10 @@ async function deleteWork(id) {
         "Une erreur est survenue, veuillez réessayer ultérieurement"
       );
     } else {
-      //Load the gallery again
+      // Update the gallery on index page so it's up to date when the user close the modal
       getWorks(gallery);
-      // Remove the display of the modal
-      var modal = document.getElementById("modal-gallery");
-      modal.style.display = "none";
+      // Update the gallery inside the modal
+      getModal(editGallery);
     }
   } catch (err) {
     console.log(err);
@@ -331,12 +330,29 @@ async function deleteWork(id) {
 //
 //
 
+//
+// --------------------------------- INITIATE VARIABLES -------------------------------------//
+//
+
+// Get the html elements for input image
+let input = document.querySelector("input");
+// Get the html elements for output image > to display the preview
+let output = document.querySelector("output");
+// Create an empty array to contain the image
+let imagesArray = [];
+
 document
   .getElementById("open-second-modal")
   .addEventListener("click", function () {
     // Get element that contain the modal in HTML, and display it
     let modalAddPicture = document.getElementById("modal-add-picture");
     modalAddPicture.style.display = "flex";
+
+    // Clean the display
+    invalidImageChanges();
+    // Remove previous user inputs
+    document.getElementById("title").value = "";
+    document.getElementById("category").selectedIndex = 0;
 
     // Close the first modal
     document.getElementById("modal-gallery").style.display = "none";
@@ -438,17 +454,6 @@ returnArrow.onclick = function () {
 // ----------------------------------------------------------------------------------------- //
 
 //
-// --------------------------------- INITIATE VARIABLES -------------------------------------//
-//
-
-// Get the html elements for input image
-let input = document.querySelector("input");
-// Get the html elements for output image > to display the preview
-let output = document.querySelector("output");
-// Create an empty array to contain the image
-let imagesArray = [];
-
-//
 // ------------------------------------ APPEARANCE CHANGES ---------------------------------//
 //
 
@@ -469,6 +474,11 @@ async function invalidImageChanges() {
   validateBtnSendPicture.disabled = true;
   // Remove disable parameter on the "valider" btn
   validateBtnSendPicture.className = "btn-typo btn-disabled";
+
+  // Get the button used to add the picture (+ Ajouter photo)
+  let addPictureButton = document.getElementById("add-picture-button");
+  // Change the text to : Modifier ; when a picture is displayed
+  addPictureButton.textContent = "+ Ajouter photo";
 }
 
 //
@@ -608,7 +618,7 @@ formElem.onsubmit = async (e) => {
       console.log("erreur 401 ou 404");
       // Changing the style of the div containing the error message to block to display it
     } else if (res.status === 201) {
-      //Load the gallery again
+      // Update the gallery
       getWorks(gallery);
       // Close the modal
       modalAddPicture.style.display = "none";
